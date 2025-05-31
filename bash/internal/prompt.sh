@@ -94,9 +94,9 @@ __prompt_git_status() {
   # Add the branch name
   IFS=' ' read -r -a status_codes <<< "$statuses"
   for status_code in ${status_codes[@]}; do
-    output+="${GIT_STATUS_COLORS[$status_code]} "
+    output+=" ${GIT_STATUS_COLORS[$status_code]}"
   done
-  output+="$branch$RESET"
+  output+=" $branch$RESET"
 
   # Add the number of commits
   output+="${YELLOW}  ${commit_count}${RESET}"
