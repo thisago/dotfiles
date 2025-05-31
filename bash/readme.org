@@ -26,16 +26,6 @@ Adds common user directories (like =$HOME/.local/bin=) to the =PATH= environment
 
 #+transclude: [[file:internal/path.sh]]  :src bash
 
-** [[file:internal/prompt.sh]]
-Provides a customizable shell prompt with Git integration, showing branch, status, commit count, and exit code, with color and icon support.
-
-#+transclude: [[file:internal/prompt.sh]]  :src bash
-
-** [[file:internal/tmux.sh]]
-Automatically attaches to or creates a =tmux= session in interactive terminals, if =tmux= is installed and configured.
-
-#+transclude: [[file:internal/tmux.sh]]  :src bash
-
 ** [[file:internal/tramp.sh]]
 Sets a simple prompt when running in a "dumb" terminal, such as when using Emacs TRAMP.
 
@@ -93,6 +83,12 @@ Adds common directories to the `PATH` environment variable.
 
 ** [[file:internal/prompt.sh]]
 Provides a customizable shell prompt with Git integration, showing branch, status, commit count, and exit code, with color and icon support.
+
+Example:
+#+begin_example
+~/.../repos/dotfiles 203316 󱇨 master  8 0 $
+#+end_example
+
 
 #+transclude: [[file:internal/prompt.sh]]  :src bash
 
