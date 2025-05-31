@@ -1,0 +1,29 @@
+#+title: Bash Configs
+
+* Files
+** [[file:.bashrc]]
+The entrypoint loops over all =internal/= shell scripts and sources them.
+
+** [[file:internal/colors.sh]]
+Defines environment variables for terminal color codes (normal, light, bold, and reset).
+
+** [[file:internal/g.sh]]
+Sets up the Go version manager (=g=) if available, and configures Go environment variables.
+
+** [[file:internal/nvm.sh]]
+Loads Node Version Manager (=nvm=) if installed, and sets up related environment variables.
+
+** [[file:internal/path.sh]]
+Adds common user directories (like =$HOME/.local/bin=) to the =PATH= environment variable.
+
+** [[file:internal/prompt.sh]]
+(Stub) Intended for prompt customization; currently only checks for interactive shells.
+
+** [[file:internal/tmux.sh]]
+Automatically attaches to or creates a =tmux= session in interactive terminals, if =tmux= is installed and configured.
+
+** [[file:internal/tramp.sh]]
+Sets a simple prompt when running in a "dumb" terminal, such as when using Emacs TRAMP.
+
+** [[file:internal/ble.sh]]
+Loads the =ble.sh= (Bash Line Editor) if installed, and sets up custom keybindings for enhanced command line editing.
