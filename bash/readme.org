@@ -27,7 +27,7 @@ Adds common user directories (like =$HOME/.local/bin=) to the =PATH= environment
 #+transclude: [[file:internal/path.sh]]  :src bash
 
 ** [[file:internal/prompt.sh]]
-(Stub) Intended for prompt customization; currently only checks for interactive shells.
+Provides a customizable shell prompt with Git integration, showing branch, status, commit count, and exit code, with color and icon support.
 
 #+transclude: [[file:internal/prompt.sh]]  :src bash
 
