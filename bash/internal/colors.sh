@@ -43,4 +43,4 @@ export BLCYAN='\033[1;96m'
 export BLWHITE='\033[1;97m'
 
 # Reset color
-export OFF='\033[0m'
+export RESET='\033[0m'
