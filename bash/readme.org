@@ -45,3 +45,68 @@ Sets a simple prompt when running in a "dumb" terminal, such as when using Emacs
 Loads the =ble.sh= if installed, and sets up custom keybindings.
 
 #+transclude: [[file:internal/ble.sh]]  :src bash
+
+** [[file:internal/aliases.sh]]
+Defines common aliases for frequently used commands, such as `ls`, `cd`, and `grep`.
+
+#+transclude: [[file:internal/aliases.sh]]  :src bash
+
+** [[file:internal/colors.sh]]
+Sets environment variables for terminal color codes, including normal, light, bold, and reset colors.
+
+#+transclude: [[file:internal/colors.sh]]  :src bash
+
+** [[file:internal/env.sh]]
+Disables tracking for analytics tools by setting the `DO_NOT_TRACK` environment variable.
+
+#+transclude: [[file:internal/env.sh]]  :src bash
+
+** [[file:internal/gh.sh]]
+Provides functions for GitHub Copilot integration, including `ghcs` for shell suggestions and `ghce` for explanations.
+
+#+transclude: [[file:internal/gh.sh]]  :src bash
+
+** [[file:internal/history.sh]]
+Configures shell history settings, such as avoiding duplicate entries and appending to the history file.
+
+#+transclude: [[file:internal/history.sh]]  :src bash
+
+** [[file:internal/interactive.sh]]
+Enables interactive shell features, such as colored output, autocd, and case-insensitive globbing.
+
+#+transclude: [[file:internal/interactive.sh]]  :src bash
+
+** [[file:internal/ledger.sh]]
+Sets up the Ledger environment for financial tracking, including the default journal file.
+
+#+transclude: [[file:internal/ledger.sh]]  :src bash
+
+** [[file:internal/libretranslate.sh]]
+Configures LibreTranslate environment variables for translation services.
+
+#+transclude: [[file:internal/libretranslate.sh]]  :src bash
+
+** [[file:internal/path.sh]]
+Adds common directories to the `PATH` environment variable.
+
+#+transclude: [[file:internal/path.sh]]  :src bash
+
+** [[file:internal/prompt.sh]]
+Provides a customizable shell prompt with Git integration, showing branch, status, commit count, and exit code, with color and icon support.
+
+#+transclude: [[file:internal/prompt.sh]]  :src bash
+
+** [[file:internal/sstit.sh]]
+Configures environment variables for the `sstit` tool, including API host, key, and model.
+
+#+transclude: [[file:internal/sstit.sh]]  :src bash
+
+** [[file:internal/tmux.sh]]
+Automatically attaches to or creates a `tmux` session in interactive terminals, if `tmux` is installed and configured.
+
+#+transclude: [[file:internal/tmux.sh]]  :src bash
+
+** [[file:internal/zoxide.sh]]
+Initializes `zoxide` for efficient directory navigation.
+
+#+transclude: [[file:internal/zoxide.sh]]  :src bash
