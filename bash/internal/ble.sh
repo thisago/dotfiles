@@ -3,9 +3,6 @@
 # If non-interactive shell, return
 [[ $- != *i* ]] && return
 
-# If ble not installed, return
-command -v ble-bind &> /dev/null || return
-
 # Set the path to ble.sh
 BLE_BIN="${HOME}/.local/share/blesh/ble.sh"
 
