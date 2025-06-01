@@ -375,10 +375,10 @@ disable-playwright: true
 ## specify a read-only file (can be used multiple times)
 #read: xxx
 ## Specify multiple values like this:
-#read:
-#  - xxx
-#  - yyy
-#  - zzz
+read:
+ - CONVENTIONS.md
+ - conventions.org
+ - /home/user/Documents/repos/dotfiles/aider/conventions.org
 
 ## Use VI editing mode in the terminal (default: False)
 #vim: false
