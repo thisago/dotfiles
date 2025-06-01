@@ -69,5 +69,6 @@ LOAD_END_TIME="$(date '+%s.%N')"
 LOAD_TOOK_SECONDS=$(awk "BEGIN {print $LOAD_END_TIME - $LOAD_START_TIME}")
 
 # Show a newline after loading all files
-INFO="${LGRAY}Loaded in ${LOAD_TOOK_SECONDS}s\t$LBLACK$(terminal_info)$RESET"
-echo -e "$LINE_START$INFO"
+echo -ne "$LINE_START$CLEAR_LINE"
+echo -ne "${LGRAY}Loaded in ${LOAD_TOOK_SECONDS}s"
+echo -e "\t$LBLACK$(terminal_info)$RESET"
