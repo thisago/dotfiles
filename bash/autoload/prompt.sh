@@ -133,6 +133,13 @@ __prompt_status_code() {
 __prompt_prompt_command() {
   # Save the parameters
   local cwd='\w'
+
+  # If the expanded cwd is longer than the terminal width, truncate it
+  if [[ ${#PWD} -gt $(tput cols) ]]; then
+    cwd="$(basename "$PWD")"
+  fi
+
+
   local dt="$(date +'%H%M%S')"
   local status="$(__prompt_status_code)"
 
