@@ -1,4 +1,4 @@
-#+title: Global Conventions
+#+title: System Prompt
 
 * Extra Tasks For Every Completion
 - Correct user's English typography when applicable.

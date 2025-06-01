@@ -378,7 +378,7 @@ disable-playwright: true
 read:
  - CONVENTIONS.md
  - conventions.org
- - /home/user/Documents/repos/dotfiles/aider/conventions.org
+ - /home/user/Documents/repos/dotfiles/aider/system.org
 
 ## Use VI editing mode in the terminal (default: False)
 #vim: false
