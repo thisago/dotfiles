@@ -47,9 +47,9 @@ export BLGRAY="$BWHITE"
 
 # Extras
 export RESET='\033[0m'
-export REVERSE_BG_FG='\033[7m'
-export UNDERLINE='\033[4m'
-export BLINK='\033[5m'
+export COLOR_REVERSE_BG_FG='\033[7m'
+export COLOR_UNDERLINE='\033[4m'
+export COLOR_BLINK='\033[5m'
 
 # Special escape sequences to manipulate the line and buffer
 export LINE_START='\033[1G'
