@@ -12,7 +12,7 @@ declare -A GIT_STATUS_COLORS=(
   ["REBASE_CONFLICT"]="${RED}"
 
   # Worktree status
-  ["UNSTAGED_CHANGES"]="${RED}󱇨"
+  ["UNSTAGED_CHANGES"]="${LYELLOW}󱇨"
   ["STAGED_CHANGES"]="${GREEN}"
   ["UNTRACKED_FILES"]="${BLUE}"
 
@@ -21,6 +21,7 @@ declare -A GIT_STATUS_COLORS=(
   ["BEHIND_UPSTREAM"]="${RED}󱓋$"
   ["DIVERGED_UPSTREAM"]="${RED}󱓌"
   ["UP_TO_DATE"]="${GREEN}󰘬"
+  ["NO_UPSTREAM"]="${WHITE}󰘬"
 
   # Others
   ["NOT_A_GIT_REPO"]="."
@@ -55,7 +56,6 @@ __prompt_git_status_codes() {
     *"Changes not staged for commit"*) output+=("UNSTAGED_CHANGES") ;;
     *"Changes to be committed"*) output+=("STAGED_CHANGES") ;;
     *"Untracked files"*) output+=("UNTRACKED_FILES") ;;
-    *) output+=("CLEAN") ;;
   esac
 
   # Check the branch situation on the upstream
@@ -65,6 +65,7 @@ __prompt_git_status_codes() {
     *"Your branch is behind"*) output+=("BEHIND_UPSTREAM") ;;
     *"refer to different commits"* | *"have diverged"*) output+=("DIVERGED_UPSTREAM") ;;
     *"You have unmerged paths"*) output+=("CONFLICT") ;;
+    *) output+=("NO_UPSTREAM") ;;
   esac
 
   echo "${output[*]}"
@@ -96,10 +97,10 @@ __prompt_git_status() {
   for status_code in ${status_codes[@]}; do
     output+=" ${GIT_STATUS_COLORS[$status_code]}"
   done
-  output+=" $branch$RESET"
+  output+=" $branch$RESET "
 
   # Add the number of commits
-  output+="${YELLOW}  ${commit_count}${RESET}"
+  output+="${YELLOW} ${commit_count}${RESET}"
 
   echo -n "$output"
 }
