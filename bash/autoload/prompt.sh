@@ -131,11 +131,14 @@ __prompt_status_code() {
 
 # Template buffer for the prompt
 __prompt_prompt_command() {
+  # Get the terminal cols
+  local cols=$(tput cols)
+
   # Save the parameters
   local cwd='\w'
 
   # If the expanded cwd is longer than the terminal width, truncate it
-  if [[ ${#PWD} -gt $(tput cols) ]]; then
+  if [[ ${#PWD} -gt $cols ]]; then
     cwd="$(basename "$PWD")"
   fi
 
@@ -171,7 +174,7 @@ __prompt_prompt_command() {
   fi
 
   # If prompt exceeds terminal width, truncate it
-  if [[ ${#prompt} -gt $(tput cols) ]]; then
+  if [[ ${#prompt} -gt $cols ]]; then
     prompt+="\n"
   fi
 
