@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # If non-interactive shell, return
-[[ $- != *i* ]] && return
+__isinteractive_is_interactive || return
 
 # Enable colorized output
 export CLICOLOR=1

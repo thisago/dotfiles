@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# GitHub Copilot CLI integration for Bash
 
 # Check if 'gh' command is available
 command -v gh &> /dev/null || return

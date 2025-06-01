@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # If not in an interactive shell, return immediately
-[[ $- != *i* ]] && return
+__isinteractive_is_interactive || return
 
 # Save all lines of a multiple-line command in the same history entry
 shopt -s cmdhist
