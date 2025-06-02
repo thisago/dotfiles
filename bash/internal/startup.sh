@@ -30,7 +30,7 @@ __startup_info() {
 
   # System information (try lsb_release, else fallback to uname)
   local sys_info=""
-  if command -v lsb_release &> /dev/null; then
+  if command -v lsb_release &>/dev/null; then
     sys_info="$(lsb_release -ds 2>/dev/null || true)"
   fi
   if [[ -z "$sys_info" ]]; then
@@ -56,6 +56,11 @@ __startup_info() {
 
 # Print a startup message with the current time and the time since the last startup.
 __startup_message() {
+  local autoload_files=("$@")
+
+  local files_count="${#autoload_files[@]}"
+  local files_rounded_kb_count="$(du -sb "${autoload_files[@]}" | awk '{sum += $1} END { printf "%.0f", sum/1024 }')"
+
   local now="$(date '+%s.%N')"
   local took="?.???"
   if [[ -n "$__STARTUP_UNIX_TIME" ]]; then
@@ -64,7 +69,7 @@ __startup_message() {
 
   echo -ne "$LINE_START$CLEAR_LINE"
   echo -ne "${LBLACK}$(__startup_info)${RESET}"
-  echo -e "\t${GRAY}Loaded in ${took}s"
+  echo -e "\t${GRAY}Loaded $files_count files ($files_rounded_kb_count KB) in ${took}s${RESET}"
 }
 
 # Shows on the same line a loading message
