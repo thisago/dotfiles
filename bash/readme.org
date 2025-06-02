@@ -2,86 +2,86 @@
 
 * Files
 ** [[file:.bashrc]]
-The entrypoint loops over all =internal/= shell scripts and sources them.
+The entrypoint loops over all =autoload/= shell scripts and sources them.
 
 #+transclude: [[file:.bashrc]]  :src bash
 
-** [[file:internal/colors.sh]]
+** [[file:autoload/colors.sh]]
 Defines environment variables for terminal color codes (normal, light, bold, and reset).
 
-#+transclude: [[file:internal/colors.sh]]  :src bash
+#+transclude: [[file:autoload/colors.sh]]  :src bash
 
-** [[file:internal/g.sh]]
+** [[file:autoload/g.sh]]
 Sets up the Go version manager (=g=) if available, and configures Go environment variables.
 
-#+transclude: [[file:internal/g.sh]]  :src bash
+#+transclude: [[file:autoload/g.sh]]  :src bash
 
-** [[file:internal/nvm.sh]]
+** [[file:autoload/nvm.sh]]
 Loads Node Version Manager (=nvm=) if installed, and sets up related environment variables.
 
-#+transclude: [[file:internal/nvm.sh]]  :src bash
+#+transclude: [[file:autoload/nvm.sh]]  :src bash
 
-** [[file:internal/path.sh]]
+** [[file:autoload/path.sh]]
 Adds common user directories (like =$HOME/.local/bin=) to the =PATH= environment variable.
 
-#+transclude: [[file:internal/path.sh]]  :src bash
+#+transclude: [[file:autoload/path.sh]]  :src bash
 
-** [[file:internal/tramp.sh]]
+** [[file:autoload/tramp.sh]]
 Sets a simple prompt when running in a "dumb" terminal, such as when using Emacs TRAMP.
 
-#+transclude: [[file:internal/tramp.sh]]  :src bash
+#+transclude: [[file:autoload/tramp.sh]]  :src bash
 
-** [[file:internal/ble.sh]]
+** [[file:autoload/ble.sh]]
 Loads the =ble.sh= if installed, and sets up custom keybindings.
 
-#+transclude: [[file:internal/ble.sh]]  :src bash
+#+transclude: [[file:autoload/ble.sh]]  :src bash
 
-** [[file:internal/aliases.sh]]
+** [[file:autoload/aliases.sh]]
 Defines common aliases for frequently used commands, such as `ls`, `cd`, and `grep`.
 
-#+transclude: [[file:internal/aliases.sh]]  :src bash
+#+transclude: [[file:autoload/aliases.sh]]  :src bash
 
-** [[file:internal/colors.sh]]
+** [[file:autoload/colors.sh]]
 Sets environment variables for terminal color codes, including normal, light, bold, and reset colors.
 
-#+transclude: [[file:internal/colors.sh]]  :src bash
+#+transclude: [[file:autoload/colors.sh]]  :src bash
 
-** [[file:internal/env.sh]]
+** [[file:autoload/env.sh]]
 Disables tracking for analytics tools by setting the `DO_NOT_TRACK` environment variable.
 
-#+transclude: [[file:internal/env.sh]]  :src bash
+#+transclude: [[file:autoload/env.sh]]  :src bash
 
-** [[file:internal/gh.sh]]
+** [[file:autoload/gh.sh]]
 Provides functions for GitHub Copilot integration, including `ghcs` for shell suggestions and `ghce` for explanations.
 
-#+transclude: [[file:internal/gh.sh]]  :src bash
+#+transclude: [[file:autoload/gh.sh]]  :src bash
 
-** [[file:internal/history.sh]]
+** [[file:autoload/history.sh]]
 Configures shell history settings, such as avoiding duplicate entries and appending to the history file.
 
-#+transclude: [[file:internal/history.sh]]  :src bash
+#+transclude: [[file:autoload/history.sh]]  :src bash
 
-** [[file:internal/interactive.sh]]
+** [[file:autoload/interactive.sh]]
 Enables interactive shell features, such as colored output, autocd, and case-insensitive globbing.
 
-#+transclude: [[file:internal/interactive.sh]]  :src bash
+#+transclude: [[file:autoload/interactive.sh]]  :src bash
 
-** [[file:internal/ledger.sh]]
+** [[file:autoload/ledger.sh]]
 Sets up the Ledger environment for financial tracking, including the default journal file.
 
-#+transclude: [[file:internal/ledger.sh]]  :src bash
+#+transclude: [[file:autoload/ledger.sh]]  :src bash
 
-** [[file:internal/libretranslate.sh]]
+** [[file:autoload/libretranslate.sh]]
 Configures LibreTranslate environment variables for translation services.
 
-#+transclude: [[file:internal/libretranslate.sh]]  :src bash
+#+transclude: [[file:autoload/libretranslate.sh]]  :src bash
 
-** [[file:internal/path.sh]]
+** [[file:autoload/path.sh]]
 Adds common directories to the `PATH` environment variable.
 
-#+transclude: [[file:internal/path.sh]]  :src bash
+#+transclude: [[file:autoload/path.sh]]  :src bash
 
-** [[file:internal/prompt.sh]]
+** [[file:autoload/prompt.sh]]
 Provides a customizable shell prompt with Git integration, showing branch, status, commit count, and exit code, with color and icon support.
 
 Example:
@@ -90,19 +90,19 @@ Example:
 #+end_example
 
 
-#+transclude: [[file:internal/prompt.sh]]  :src bash
+#+transclude: [[file:autoload/prompt.sh]]  :src bash
 
-** [[file:internal/sstit.sh]]
+** [[file:autoload/sstit.sh]]
 Configures environment variables for the `sstit` tool, including API host, key, and model.
 
-#+transclude: [[file:internal/sstit.sh]]  :src bash
+#+transclude: [[file:autoload/sstit.sh]]  :src bash
 
-** [[file:internal/tmux.sh]]
+** [[file:autoload/tmux.sh]]
 Automatically attaches to or creates a `tmux` session in interactive terminals, if `tmux` is installed and configured.
 
-#+transclude: [[file:internal/tmux.sh]]  :src bash
+#+transclude: [[file:autoload/tmux.sh]]  :src bash
 
-** [[file:internal/zoxide.sh]]
+** [[file:autoload/zoxide.sh]]
 Initializes `zoxide` for efficient directory navigation.
 
-#+transclude: [[file:internal/zoxide.sh]]  :src bash
+#+transclude: [[file:autoload/zoxide.sh]]  :src bash
