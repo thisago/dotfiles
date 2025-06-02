@@ -9,6 +9,7 @@ __startup_init() {
 # Retrieve the system information and build the line shown on success startup message
 #
 # It shows:
+# - Hostname (e.g., "notebook")
 # - Date time (e.g., "2024-03-20 09:02:07")
 # - Shell name (e.g., "bash", "zsh")
 # - System information (e.g., "Linux 5.4.0-42-generic")
@@ -16,8 +17,11 @@ __startup_init() {
 # - Whether the terminal is accessed via SSH
 #
 # Example:
-# "2024-03-20 09:02:07 - bash - Ubuntu 20.04 LTS - 8GB RAM; 4 cores - SSH"
+# "notebook - 2024-03-20 09:02:07 - bash - Ubuntu 20.04 LTS - 8GB RAM; 4 cores - SSH"
 __startup_info() {
+  # Hostname
+  local hostname="$(hostname -s 2>/dev/null || echo "unknown")"
+
   # Date time
   local datetime="$(date '+%Y-%m-%d %H:%M:%S')"
 
@@ -47,7 +51,7 @@ __startup_info() {
   local ssh_str=""
   [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]] && ssh_str=" - SSH"
 
-  echo "$datetime - $shell_name - $sys_info - $ram_str; $cpu_str$ssh_str"
+  echo "$hostname - $datetime - $shell_name - $sys_info - $ram_str; $cpu_str$ssh_str"
 }
 
 # Print a startup message with the current time and the time since the last startup.
@@ -59,8 +63,8 @@ __startup_message() {
   fi
 
   echo -ne "$LINE_START$CLEAR_LINE"
-  echo -ne "${GRAY}Loaded in ${took}s"
-  echo -e "\t${LBLACK}$(__startup_info)${RESET}"
+  echo -ne "${LBLACK}$(__startup_info)${RESET}"
+  echo -e "\t${GRAY}Loaded in ${took}s"
 }
 
 # Shows on the same line a loading message
