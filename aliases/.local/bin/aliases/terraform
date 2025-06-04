@@ -4,7 +4,7 @@
 
 # Check if Tofu is installed
 if ! command -v tofu &>/dev/null; then
-  echo "Tofu is not installed. Please install Tofu first."
+  echo 'Tofu is not installed. Please install Tofu first.'
   exit 1
 fi
 
