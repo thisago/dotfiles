@@ -8,14 +8,14 @@ __startup_init() {
 
 # Checks if should hide the startup message.
 __startup_should_display() {
-  # If the environment variable is empty, display the startup message.
-  [[ "$DOTFILES_NO_STARTUP_MESSAGE" == "" ]] && return 0
+  # If the user has set DOTFILES_NO_STARTUP_MESSAGE, skip the startup message
+  [[ "$DOTFILES_NO_STARTUP_MESSAGE" == "" ]] || return 1
 
-  # If the terminal is interactive, display the startup message.
-  __isinteractive_is_interactive && return 0
+  # If the terminal is not interactive, skip the startup message
+  __isinteractive_is_interactive || return 1
 
-  # If the terminal is not interactive, do not display the startup message.
-  return 1
+  # Otherwise, show the startup message
+  return 0
 }
 
 # Retrieve the system information and build the line shown on success startup message
