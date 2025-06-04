@@ -5,6 +5,9 @@
 # Check if 'pass' command is available
 [[ -n "$PASS_AVAILABLE" ]] || return
 
+# Check if we should skip due user configuration
+[[ "$DOTFILES_NO_SECRET_LOAD" != "" ]] && return
+
 # Define a helper that retrieves a secret from the pass store
 get_pass() {
   local secret_path="$1"
@@ -18,4 +21,4 @@ get_pass() {
 }
 
 # Export secrets from the pass store
-# Nothing defined yet
+export OPENAI_API_KEY=$(get_pass "bash/openai_api_key")

@@ -73,8 +73,11 @@ pass init "$key_id"
 - =wifi/=
   - =home/=
     - =network_name.gpg=
+- =bash/=
+  - =openai_api_key.gpg=
 
 ** Environment Variables Loading
 Suggested naming:
-- =OPENAI_API_KEY= :: =net/github.com/username/tokens/copilot.gpg=
-- =MONGO_URI= :: =net/mongodb.com/username/cluster/cluster_name.gpg=
+- =OPENAI_API_KEY= :: =net/github.com/username/tokens/copilot=
+- =MONGO_URI= :: =net/mongodb.com/username/cluster/cluster_name=
+- =OPENAI_API_KEY= :: =bash/openai_api_key=
