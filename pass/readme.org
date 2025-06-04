@@ -64,7 +64,7 @@ pass init "$key_id"
         - =tokens/=
           - =access_key.gpg=
           - =secret_key.gpg=
-  - =account.mongodb.com/=
+  - =mongodb.com/=
     - =username/=
       - =password.gpg=
       - =otp.gpg=
@@ -77,4 +77,4 @@ pass init "$key_id"
 ** Environment Variables Loading
 Suggested naming:
 - =OPENAI_API_KEY= :: =net/github.com/username/tokens/copilot.gpg=
-- =MONGO_URI= :: =net/account.mongodb.com/username/cluster/cluster_name.gpg=
+- =MONGO_URI= :: =net/mongodb.com/username/cluster/cluster_name.gpg=
