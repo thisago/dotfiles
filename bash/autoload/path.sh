@@ -21,7 +21,7 @@ add_path "$HOME/.local/bin"
 add_path "$HOME/go/bin"
 
 # Other packages managers
-add_path "$HOME/bun/bin"
+add_path "$HOME/.bun/bin"
 
 # Loop over all .local/bin subdirectories and add them to PATH
 for dir in "$HOME/.local/bin"/*; do
