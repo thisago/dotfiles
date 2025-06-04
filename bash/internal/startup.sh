@@ -7,9 +7,9 @@ __startup_init() {
 }
 
 # Checks if should hide the startup message.
-__startup_should_omit() {
+__startup_should_display() {
   # If the environment variable is set, omit the startup message.
-  [[ -n "$__STARTUP_OMIT_MESSAGE" ]] && return 0
+  [[ "$__STARTUP_OMIT_MESSAGE" == "" ]] && return 0
 
   # If the terminal is not interactive, omit the startup message.
   __isinteractive_is_interactive || return 0
@@ -30,7 +30,7 @@ __startup_should_omit() {
 # Example:
 # "notebook - 2024-03-20 09:02:07 - bash - Ubuntu 20.04 LTS - 8GB RAM; 4 cores - SSH"
 __startup_info() {
-  __startup_should_omit || return 0
+  __startup_should_display || return 0
 
   # Hostname
   local hostname="$(hostname -s 2>/dev/null || echo "unknown")"
@@ -69,7 +69,7 @@ __startup_info() {
 
 # Print a startup message with the current time and the time since the last startup.
 __startup_message() {
-  __startup_should_omit || return 0
+  __startup_should_display || return 0
 
   local autoload_files=("$@")
 
@@ -89,6 +89,7 @@ __startup_message() {
 
 # Shows on the same line a loading message
 __startup_loading() {
+  __startup_should_display || return 0
   local pkg="$1"
   echo -ne "\r\033[KLoading $pkg..."
 }
