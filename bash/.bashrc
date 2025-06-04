@@ -15,6 +15,8 @@ source "$dir/internal/startup.sh"
 source "$dir/internal/isinteractive.sh"
 __startup_init
 
+source "$dir/internal/dotenv.sh"
+
 # Store the files to auto-load
 autoload_files=($dir/autoload/*.sh)
 
