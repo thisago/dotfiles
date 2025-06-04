@@ -137,8 +137,8 @@ __prompt_prompt_command() {
   # Save the parameters
   local cwd='\w'
 
-  # If the expanded cwd is longer than the terminal width, truncate it
-  if [[ ${#PWD} -gt $cols ]]; then
+  # If the expanded cwd is longer than 1/2 of the terminal width, truncate it
+  if [[ ${#PWD} -gt $((cols / 2)) ]]; then
     cwd="$(basename "$PWD")"
   fi
 
@@ -158,10 +158,18 @@ __prompt_prompt_command() {
   # Date and Time
   prompt+="$LBLACK$dt"
 
+
   # Git branch and status
+  git_branch="$(__prompt_git_current_branch)"
+  # If the git branch is larger than 1/3 of the terminal width, cut it
+  if [[ ${#git_branch} -gt $((cols / 3)) ]]; then
+    git_branch="${git_branch:0:$((cols / 3 - 3))}…"
+  fi
+
+  # Add the git status to the prompt
   prompt+="$(__prompt_git_status \
     "$(__prompt_git_status_codes)" \
-    "$(__prompt_git_current_branch)" \
+    "$git_branch" \
     "$(__prompt_git_commit_count)")"
 
   prompt+=" "
