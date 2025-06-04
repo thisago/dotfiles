@@ -23,8 +23,6 @@ Expire-Date: 0
 gpg --batch --generate-key gpg-batch.txt
 #+end_src
 
-#+RESULTS:
-
 *** Retrieving the Generated Key
 #+name: key_id
 #+begin_src bash
