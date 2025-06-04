@@ -8,12 +8,13 @@ __startup_init() {
 
 # Checks if should hide the startup message.
 __startup_should_display() {
-  # If the environment variable is set, omit the startup message.
-  [[ "$__STARTUP_OMIT_MESSAGE" == "" ]] && return 0
+  # If the environment variable is empty, display the startup message.
+  [[ "$__STARTUP_OMIT_MESSAGE" != "" ]] && return 0
 
-  # If the terminal is not interactive, omit the startup message.
-  __isinteractive_is_interactive || return 0
+  # If the terminal is interactive, display the startup message.
+  __isinteractive_is_interactive && return 0
 
+  # If the terminal is not interactive, do not display the startup message.
   return 1
 }
 
