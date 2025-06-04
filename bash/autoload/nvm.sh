@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Check if 'nvm' command is available
-command -v nvm &> /dev/null || return
-
 # Set environment variables for Node Version Manager (nvm)
 export NVM_DIR="${HOME}/.nvm"
 
