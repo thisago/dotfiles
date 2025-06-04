@@ -2,11 +2,9 @@
 #+auto_tangle: yes
 
 * Manual Setup
-
 To use =pass= securely, you need to generate a dedicated GPG key for encryption with Ed25519 for signing and Curve25519 for encryption.
 
 ** Generating GPG key
-Use the script below to fully generate with this configuration:
 *** GPG Key Config
 #+begin_src text :tangle gpg-batch.txt
 %no-protection
