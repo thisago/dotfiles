@@ -6,6 +6,17 @@ __startup_init() {
   export __STARTUP_UNIX_TIME="$(date '+%s.%N')"
 }
 
+# Checks if should hide the startup message.
+__startup_should_omit() {
+  # If the environment variable is set, omit the startup message.
+  [[ -n "$__STARTUP_OMIT_MESSAGE" ]] && return 0
+
+  # If the terminal is not interactive, omit the startup message.
+  __isinteractive_is_interactive || return 0
+
+  return 1
+}
+
 # Retrieve the system information and build the line shown on success startup message
 #
 # It shows:
@@ -19,6 +30,8 @@ __startup_init() {
 # Example:
 # "notebook - 2024-03-20 09:02:07 - bash - Ubuntu 20.04 LTS - 8GB RAM; 4 cores - SSH"
 __startup_info() {
+  __startup_should_omit || return 0
+
   # Hostname
   local hostname="$(hostname -s 2>/dev/null || echo "unknown")"
 
@@ -56,6 +69,8 @@ __startup_info() {
 
 # Print a startup message with the current time and the time since the last startup.
 __startup_message() {
+  __startup_should_omit || return 0
+
   local autoload_files=("$@")
 
   local files_count="${#autoload_files[@]}"

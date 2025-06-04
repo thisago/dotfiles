@@ -13,15 +13,15 @@ dir="$(dirname "$(realpath ~/.bashrc)")"
 # Load the internal startup script
 source "$dir/internal/startup.sh"
 source "$dir/internal/isinteractive.sh"
-__isinteractive_is_interactive && __startup_init
+__startup_init
 
 # Store the files to auto-load
 autoload_files=($dir/autoload/*.sh)
 
 for file in "${autoload_files[@]}"; do
   # Show a loading on the same line, replacing the previous one
-  __isinteractive_is_interactive && __startup_loading "$(basename "$file")"
+   __startup_loading "$(basename "$file")"
   source "$file"
 done
 
-__isinteractive_is_interactive && __startup_message "${autoload_files[@]}"
+__startup_message "${autoload_files[@]}"
