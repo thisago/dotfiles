@@ -22,3 +22,9 @@ get_pass() {
 
 # Export secrets from the pass store
 export OPENAI_API_KEY=$(get_pass "bash/openai_api_key")
+
+# Setup the Git user configuration
+export GIT_AUTHOR_NAME="$(get_pass "user/name")"
+export GIT_AUTHOR_EMAIL="$(get_pass "user/email")"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"

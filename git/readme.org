@@ -1,0 +1,6 @@
+#+title: Git
+
+* Manual configuration
+Since we're defining the =git= user and email as env for easier portability, you'll need to define the following =pass= values:
+- =user/name=
+- =user/email=
