@@ -1,4 +1,4 @@
-#+title: Pass
+#+title: Pass Setup
 #+auto_tangle: yes
 
 * Manual Setup
