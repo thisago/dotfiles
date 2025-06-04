@@ -43,7 +43,7 @@ pass init "$key_id"
 
 
 * Suggested File Structure
-- =cloud/=
+- =net/=
   - =github.com/=
     - =username/=
       - =password.gpg=
@@ -76,5 +76,5 @@ pass init "$key_id"
 
 ** Environment Variables Loading
 Suggested naming:
-- =OPENAI_API_KEY= :: =github.com/username/tokens/copilot.gpg=
-- =MONGO_URI= :: =account.mongodb.com/username/cluster/cluster_name.gpg=
+- =OPENAI_API_KEY= :: =net/github.com/username/tokens/copilot.gpg=
+- =MONGO_URI= :: =net/account.mongodb.com/username/cluster/cluster_name.gpg=
