@@ -6,4 +6,4 @@ You can set some environment variables to change the behavior of the autoload:
   #+begin_example
   notebook - 2024-03-20 09:02:07 - bash - Ubuntu 20.04 LTS - 8GB RAM; 4 cores - SSH	Loaded 19 files (17 KB) in 0.517609s
   #+end_example
-- =DOTFILES_NO_SECRET_LOAD= :: Disables the loading of secrets via =pass=.
+- =DOTFILES_NO_SECRET_LOAD= :: Disables the loading of secrets via =pass=. (Except Git user info)
