@@ -40,3 +40,41 @@ pass init "$key_id"
 #+RESULTS:
 : mkdir: created directory '/home/user/.password-store/'
 : Password store initialized for 8CA82212EC57873B
+
+
+* Suggested File Structure
+- =cloud/=
+  - =github.com/=
+    - =username/=
+      - =password.gpg=
+      - =otp.gpg=
+      - =tokens/=
+        - =copilot.gpg=
+  - =aws.amazon.com/=
+    - =username/=
+      - =password.gpg=
+      - =otp.gpg=
+      - =tokens/=
+        - =access_key.gpg=
+        - =secret_key.gpg=
+    - =iam/=
+      - =username/=
+        - =id.gpg=
+        - =password.gpg=
+        - =tokens/=
+          - =access_key.gpg=
+          - =secret_key.gpg=
+  - =account.mongodb.com/=
+    - =username/=
+      - =password.gpg=
+      - =otp.gpg=
+      - =cluster/=
+        - =cluster_name.gpg=
+- =wifi/=
+  - =home/=
+    - =network_name.gpg=
+
+** Environment Variables Loading
+Suggested naming:
+- =OPENAI_API_KEY= :: =github.com/username/tokens/copilot.gpg=
+- =MONGO_URI= :: =account.mongodb.com/username/cluster/cluster_name.gpg=
