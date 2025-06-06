@@ -37,3 +37,8 @@ alias fgrep='fgrep --color=auto'
 if command -v batcat &> /dev/null; then
   alias bat='batcat'
 fi
+
+# If `xclip` command is available, set aliases
+if command -v xclip &> /dev/null; then
+  alias xclipoard='xclip -selection clipboard'
+fi
