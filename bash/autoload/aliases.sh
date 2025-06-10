@@ -6,6 +6,8 @@ __isinteractive_is_interactive || return
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
 
 # If 'eza' command is available, set it as 'exa'
 if command -v exa &> /dev/null; then
