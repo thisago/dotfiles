@@ -45,3 +45,9 @@ touchp() {
   # Create the file
   touch "$file"
 }
+
+# Run the command with EDITOR set as nano
+wnano() {
+  export EDITOR=nano
+  $@
+}
