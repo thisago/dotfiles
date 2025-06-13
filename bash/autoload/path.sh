@@ -24,6 +24,7 @@ add_path "$HOME/go/bin"
 add_path "$HOME/.bun/bin"
 add_path "$HOME/.config/emacs/bin"
 add_path "$HOME/.nimble/bin"
+add_path "$HOME/.cargo/bin"
 
 # Loop over all .local/bin subdirectories and add them to PATH
 for dir in "$HOME/.local/bin"/*; do
