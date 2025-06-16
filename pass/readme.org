@@ -78,6 +78,5 @@ pass init "$key_id"
 
 ** Environment Variables Loading
 Suggested naming:
-- =OPENAI_API_KEY= :: =net/github.com/username/tokens/copilot=
 - =MONGO_URI= :: =net/mongodb.com/username/cluster/cluster_name=
 - =OPENAI_API_KEY= :: =bash/openai_api_key=
