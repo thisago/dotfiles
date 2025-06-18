@@ -376,7 +376,7 @@ disable-playwright: true
 #read: xxx
 ## Specify multiple values like this:
 read:
- - CONVENTIONS.md
+ - conventions.md
  - conventions.org
  - /home/user/Documents/repos/dotfiles/aider/system.org
 
