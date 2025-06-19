@@ -1,0 +1,14 @@
+# Basic configuration parameters
+# Codex configuration files can be placed in the ~/.codex/ directory, supporting both YAML and JSON formats.
+# model: o4-mini # AI model to use 	Any model name supporting OpenAI API
+model: gpt-4.1 # AI model to use    Any model name supporting OpenAI API
+provider: "copilot"
+approvalMode: suggest # AI assistant's permission mode 	suggest (suggestions only) auto-edit (automatic edits) full-auto (fully automatic)
+fullAutoErrorMode: ask-user # Error handling in full-auto mode 	ask-user (prompt for user input) ignore-and-continue (ignore and proceed)
+notify: true # Enable desktop notifications 	true/false
+
+# History configuration
+# In the history object, you can configure conversation history settings:
+maxSize: 1000 # number 	Maximum number of history entries to save
+saveHistory: true # boolean 	Whether to save history
+# sensitivePatterns: [] # Patterns of sensitive information to filter in history
