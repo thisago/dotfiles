@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# If non-interactive shell, return
+__isinteractive_is_interactive || return
+
 # Create a directory and change into it
 mkcd() {
   dir="$1"

@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # GitHub Copilot CLI integration for Bash
 
+# If non-interactive shell, return
+__isinteractive_is_interactive || return
+
 # Check if 'gh' command is available
 command -v gh &> /dev/null || return
 

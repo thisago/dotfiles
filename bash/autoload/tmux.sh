@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# If non-interactive shell, return
-__isinteractive_is_interactive || return
-
 # If tmux not installed, return
 command -v tmux &> /dev/null || return
 
@@ -11,6 +8,9 @@ TMUX_CONF="${HOME}/.config/tmux/tmux.conf"
 
 # If tmux configuration does not exist, return
 [ ! -f "$TMUX_CONF" ] && return
+
+# If non-interactive shell, return
+__isinteractive_is_interactive || return
 
 # If not inside tmux an in a TTY terminal, start tmux
 if [ -z "$TMUX" ] && [ -t 0 ]; then
