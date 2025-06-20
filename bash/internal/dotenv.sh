@@ -8,7 +8,10 @@ DOTFILES_DOTENV_FILE="$(dirname "${BASH_SOURCE[0]}")/.env"
 # Check if the dotenv file exists
 if [[ -f "$DOTFILES_DOTENV_FILE" ]]; then
   # Load the dotenv file
-  export $(grep -v '^#' "$DOTFILES_DOTENV_FILE" | xargs)
+  if ! source "$DOTFILES_DOTENV_FILE" 2>/dev/null; then
+    echo "Error: Failed to load dotenv file '$DOTFILES_DOTENV_FILE'." >&2
+    return 1
+  fi
 else
   echo "Warning: Dotenv file '$DOTFILES_DOTENV_FILE' not found." >&2
   echo "Please create it in order to use your bash propertly." >&2
