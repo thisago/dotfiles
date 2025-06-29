@@ -18,7 +18,7 @@
 # Main model:
 
 ## Specify the model to use for the main chat
-model: openai/gpt-4.1-2025-04-14
+model: openai/gpt-4.1
 
 ########################
 # API Keys and settings:
