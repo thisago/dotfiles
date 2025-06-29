@@ -302,7 +302,7 @@ analytics-disable: true
 #just-check-update: false
 
 ## Check for new aider versions on launch
-#check-update: true
+check-update: false
 
 ## Show release notes on first run of new version (default: None, ask user)
 #show-release-notes: xxx
