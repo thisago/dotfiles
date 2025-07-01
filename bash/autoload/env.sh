@@ -81,11 +81,13 @@ The description is a quick description describing the overall intention followed
 Provide a brief comment to the developer. Suggesting fixes, improvements, highlighting possible issues and next steps.
 
 Separate the comments in:
-- **Possible Issues:** Bugs, unexpected behaviors, security, etc. If needed, highlight the most important.
+- **Possible Issues:** Bugs, unexpected behaviors, security, etc. If needed, highlight the most important. Only point out issues that you are sure about.
 - **Improvements:** Style, consistency, best practices, missing comments on non-obvious parts, duplication, etc.
-- **Overall Opinion:** As a experienced software developer, write a quick paragraph with your sincere opinion. Feel free to be harsh.
+- **Overall Opinion:** As a experienced software developer, write a quick paragraph with your sincere opinion.
 
-The goal is provide the developer an last moment to think and be conscious, prevent mistakes and help him to deliver the best code possible. So be quick but precise.
+Feel free to be harsh, do not try to approve, specially about the issues and improvements.
+
+The goal is help the developer to prevent mistakes and deliver the best code possible. Be non-obvious, quick and precise.
 
 # Overall Commit Message Structure
 The commit message should be structured as follows:
