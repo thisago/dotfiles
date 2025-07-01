@@ -18,7 +18,7 @@
 # Main model:
 
 ## Specify the model to use for the main chat
-model: openai/gpt-4.1
+model: openai/gpt-4.1-2025-04-14
 
 ########################
 # API Keys and settings:
@@ -111,7 +111,7 @@ auto-accept-architect: false
 #editor-edit-format: xxx
 
 ## Only work with models that have meta-data available (default: True)
-#show-model-warnings: true
+show-model-warnings: false
 
 ## Check if model accepts settings like reasoning_effort/thinking_tokens (default: True)
 #check-model-accepts-settings: true
