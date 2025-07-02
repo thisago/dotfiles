@@ -9,7 +9,7 @@ export OPENAI_BASE_URL="${OPENAI_API_BASE}"
 
 # LLM Prompts
 export LLM_COMMIT_PROMPT='
-Generate a commit message based on Conventional Commits specification with a review comment below, without any markers or wrappers for the text.
+Generate ONE commit message based on Conventional Commits specification with a review comment below, without any markers or wrappers for the text.
 
 # Commit Summary
 Make sure to never exceed the 50 characters hard limit at commit summary.
@@ -99,6 +99,10 @@ The commit message should be structured as follows:
     ---
 
     [comments]
+
+# Edge Cases
+- If multiple intentions and scopes are present, use the most relevant one in the summary and but include all in the body.
+
 '
 
 export AIDER_COMMIT_PROMPT="${LLM_COMMIT_PROMPT}"
