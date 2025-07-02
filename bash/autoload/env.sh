@@ -81,9 +81,9 @@ The description is a quick description describing the overall intention followed
 Provide a brief comment to the developer. Suggesting fixes, improvements, highlighting possible issues and next steps.
 
 Separate the comments in:
-- **Possible Issues:** Bugs, unexpected behaviors, security, etc. If needed, highlight the most important. Only point out issues that you are sure about.
-- **Improvements:** Style, consistency, best practices, missing comments on non-obvious parts, duplication, etc.
-- **Overall Opinion:** As a experienced software developer, write a quick paragraph with your sincere opinion.
+- **Possible Issues:** Bugs, unexpected behaviors, security, etc. Only point out issues that you are sure about. Omit when empty.
+- **Improvements:** Style, consistency, best practices, missing comments on non-obvious parts, duplication, etc. Omit when empty.
+- **Overall Opinion:** As a experienced software developer, write a quick paragraph with your sincere opinion on the code quality, maintainability, readability, and overall impression of the changes made.
 
 Feel free to be harsh, do not try to approve, specially about the issues and improvements.
 
