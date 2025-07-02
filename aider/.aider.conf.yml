@@ -255,7 +255,7 @@ auto-commits: true
 #skip-sanity-check-repo: false
 
 ## Enable/disable watching files for ai coding comments (default: False)
-watch-files: true
+watch-files: false
 
 ########################
 # Fixing and committing:

@@ -26,3 +26,6 @@ else
     echo "Failed to generate Aider shell completion file."
   fi
 fi
+
+# Aliase  s
+alias aiderw="aider --watch-files --chat-mode architect --auto-accept-architect"
