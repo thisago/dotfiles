@@ -78,16 +78,7 @@ The description is a quick description describing the overall intention followed
   Why? Missing quick description, one liner, empty explanations and hard to read.
 
 # Review
-Provide a brief comment to the developer. Suggesting fixes, improvements, highlighting possible issues and next steps.
-
-Separate the comments in:
-- **Possible Issues:** Bugs, unexpected behaviors, security, etc. Only point out issues that you are sure about. Omit when empty.
-- **Improvements:** Style, consistency, best practices, missing comments on non-obvious parts, duplication, etc. Omit when empty.
-- **Overall Opinion:** As a experienced software developer, write a quick paragraph with your sincere opinion on the code quality, maintainability, readability, and overall impression of the changes made.
-
-Feel free to be harsh, do not try to approve, specially about the issues and improvements.
-
-The goal is help the developer to prevent mistakes and deliver the best code possible. Be non-obvious, quick and precise.
+Provide a brief comment to the developer and the reviewers about the diff. Highlighting possible issues when applicable.
 
 # Overall Commit Message Structure
 The commit message should be structured as follows:
@@ -102,7 +93,6 @@ The commit message should be structured as follows:
 
 # Edge Cases
 - If multiple intentions and scopes are present, use the most relevant one in the summary and but include all in the body.
-
 '
 
 export AIDER_COMMIT_PROMPT="${LLM_COMMIT_PROMPT}"
