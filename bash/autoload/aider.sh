@@ -27,5 +27,5 @@ else
   fi
 fi
 
-# Aliase  s
+# Aliases
 alias aiderw="aider --watch-files --chat-mode architect --auto-accept-architect"
