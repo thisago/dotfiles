@@ -77,8 +77,8 @@ The description is a quick description describing the overall intention followed
   ```
   Why? Missing quick description, one liner, empty explanations and hard to read.
 
-# Review
-Provide a brief comment to the developer and the reviewers about the diff. Highlighting possible issues when applicable.
+# Critical Review
+Provide a critical comment to the developer and the reviewers about the diff, highlighting possible issues. When no issue found, omit.
 
 # Overall Commit Message Structure
 The commit message should be structured as follows:
