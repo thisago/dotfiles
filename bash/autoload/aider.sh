@@ -29,3 +29,4 @@ fi
 
 # Aliases
 alias aiderw="aider --watch-files --chat-mode architect --auto-accept-architect"
+alias aidercommit="aider -m '/commit'"
