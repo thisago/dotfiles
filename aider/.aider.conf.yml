@@ -377,6 +377,8 @@ disable-playwright: true
 ## Specify multiple values like this:
 read:
  - conventions.md
+ - ./.meta/conventions.md
+ - ./.meta/agents.org
  - conventions.org
  - /home/user/Documents/repos/dotfiles/aider/system.org
 
