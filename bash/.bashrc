@@ -21,10 +21,7 @@ source "$dir/internal/dotenv.sh"
 autoload_files=($dir/autoload/*.sh)
 
 for file in "${autoload_files[@]}"; do
-  filebasename="$(basename "$file")"
-  __startup_loading "$filebasename"
   source "$file"
-  __startup_loaded "$filebasename"
 done
 
 __startup_message "${autoload_files[@]}"
