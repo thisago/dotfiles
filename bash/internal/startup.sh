@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 
+function __startup_now_nano() {
+  # Get the current time in nanoseconds
+  date '+%s.%N'
+}
+
+# Store the file with higher load time
+__STARTUP_SLOWEST_FILE=""
+__STARTUP_SLOWEST_TIME=0
+__STARTUP_SLOWEST_FILE_CURRENT_TIME='0.0'
+
 # Save the unix timestamp of startup to a global variable.
 __startup_init() {
   # Use nanoseconds for precision
-  export __STARTUP_UNIX_TIME="$(date '+%s.%N')"
+  export __STARTUP_UNIX_TIME="$(__startup_now_nano)"
 }
 
 # Checks if should hide the startup message.
@@ -36,9 +46,6 @@ __startup_info() {
   # Hostname
   local hostname="$(hostname -s 2>/dev/null || echo "unknown")"
 
-  # Date time
-  local datetime="$(date '+%Y-%m-%d %H:%M:%S')"
-
   # Shell name
   local shell_name="$(ps -p $$ -o comm= | awk -F/ '{print $NF}')"
 
@@ -65,7 +72,7 @@ __startup_info() {
   local ssh_str=""
   [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]] && ssh_str=" - SSH"
 
-  echo "$hostname - $datetime - $shell_name - $sys_info - $ram_str; $cpu_str$ssh_str"
+  echo "$hostname - $shell_name - $sys_info - $ram_str; $cpu_str$ssh_str"
 }
 
 # Print a startup message with the current time and the time since the last startup.
@@ -77,20 +84,34 @@ __startup_message() {
   local files_count="${#autoload_files[@]}"
   local files_rounded_kb_count="$(du -sb "${autoload_files[@]}" | awk '{sum += $1} END { printf "%.0f", sum/1024 }')"
 
-  local now="$(date '+%s.%N')"
+  local now="$(__startup_now_nano)"
   local took="?.???"
   if [[ -n "$__STARTUP_UNIX_TIME" ]]; then
     took=$(awk "BEGIN {print $now - $__STARTUP_UNIX_TIME}")
   fi
 
+  # Strip the file extension from the file name
+  local slowest_file="$(sed 's/\.sh$//' <<< "$__STARTUP_SLOWEST_FILE")"
+
   echo -ne "$LINE_START$CLEAR_LINE"
   echo -ne "${LBLACK}$(__startup_info)${RESET}"
-  echo -e "\t${GRAY}Loaded $files_count files ($files_rounded_kb_count KB) in ${took}s${RESET}"
+  echo -e "\t${GRAY}Loaded $files_count files ($files_rounded_kb_count KB) in ${took}s; ${slowest_file} the longest ${__STARTUP_SLOWEST_TIME}s${RESET}"
 }
 
 # Shows on the same line a loading message
 __startup_loading() {
+  __STARTUP_SLOWEST_FILE_CURRENT_TIME="$(__startup_now_nano)"
   __startup_should_display || return 0
   local pkg="$1"
   echo -ne "\r\033[KLoading $pkg..."
+}
+
+__startup_loaded() {
+  local pkg="$1"
+
+  local took="$(awk "BEGIN {print $(__startup_now_nano) - $__STARTUP_SLOWEST_FILE_CURRENT_TIME}")"
+  if [[ "$took" > "$__STARTUP_SLOWEST_TIME" ]]; then
+    __STARTUP_SLOWEST_FILE="$pkg"
+    __STARTUP_SLOWEST_TIME="$took"
+  fi
 }
