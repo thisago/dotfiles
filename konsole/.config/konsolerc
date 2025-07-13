@@ -1,0 +1,15 @@
+[Desktop Entry]
+DefaultProfile=Custom.profile
+
+[General]
+ConfigVersion=1
+
+[KonsoleWindow]
+RemoveWindowTitleBarAndFrame=true
+ShowWindowTitleOnTitleBar=true
+
+[Shortcut Schemes]
+Current Scheme=Default
+
+[UiSettings]
+ColorScheme=
