@@ -1,0 +1,16 @@
+# -*- mode: conf -*-
+
+Host *
+  # Prevent SSH connections timing out. This will poll the server every 60
+  ServerAliveInterval 60
+  ServerAliveCountMax 3
+
+Host vf
+  HostName 192.168.240.1
+  Port 222
+  User git
+
+Host gh
+  HostName github.com
+  Port 22
+  User git

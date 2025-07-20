@@ -380,7 +380,7 @@ read:
  - ./.meta/conventions.md
  - ./.meta/agents.org
  - conventions.org
- - /home/user/Documents/repos/dotfiles/aider/system.org
+ - ~/.local/share/chezmoi/internal/aider/system.org
 
 ## Use VI editing mode in the terminal (default: False)
 #vim: false

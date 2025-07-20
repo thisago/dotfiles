@@ -8,14 +8,14 @@ if [[ $- != *i* ]] || [[ $TERM == "dumb" ]]; then
   [[ -n "$SSH_CLIENT" ]] && source /etc/profile
 fi
 
-dir="$(dirname "$(realpath ~/.bashrc)")"
+dir="$(realpath ~/.local/share/chezmoi/internal/bash)"
 
 # Load the internal startup script
-source "$dir/internal/startup.sh"
-source "$dir/internal/isinteractive.sh"
+source "$dir/startup.sh"
+source "$dir/isinteractive.sh"
 __startup_init
 
-source "$dir/internal/dotenv.sh"
+source "$dir/dotenv.sh"
 
 # Store the files to auto-load
 autoload_files=($dir/autoload/*.sh)

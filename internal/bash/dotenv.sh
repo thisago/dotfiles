@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Loacs `.env` file and exports its variables to the environment.
+# Loads `.env` file and exports its variables to the environment.
 
 # Define the path to the dotenv file
 DOTFILES_DOTENV_FILE="$(dirname "${BASH_SOURCE[0]}")/.env"

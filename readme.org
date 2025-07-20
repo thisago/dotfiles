@@ -1,28 +1,78 @@
 #+title: Dot Files
-#+auto_tangle: t
 
-* Setup
-#+begin_src bash :tangle setup.sh :results pp
-for app in */; do
-  echo "Stowing $app..."
-  stow -v -R -t ~ $app
-done
+* Pass
+** Generating GPG key
+*** GPG Key Config
+#+begin_src text :tangle gpg-batch.txt
+%no-protection
+Key-Type: eddsa
+Key-Curve: ed25519
+Subkey-Type: ecdh
+Subkey-Curve: cv25519
+Name-Real: pass
+Name-Email: pass@localhost
+Expire-Date: 0
+%commit
+#+end_src
+
+*** Generating
+#+begin_src bash :results none
+gpg --batch --generate-key gpg-batch.txt
+#+end_src
+
+*** Retrieving the Generated Key
+#+name: key_id
+#+begin_src bash
+gpg --list-keys --with-colons pass@localhost | awk -F: '/^pub/ {print $5; exit}'
+#+end_src
+
+#+RESULTS: key_id
+: 8CA82212EC57873B
+
+*** Initialize =pass= with the Generated Key
+#+begin_src bash :var key_id=key_id :results pp
+pass init "$key_id"
 #+end_src
 
 #+RESULTS:
-#+begin_example
-Stowing aider/...
-Stowing aliases/...
-Stowing asciinema/...
-Stowing aws/...
-Stowing bash/...
-Stowing bin/...
-Stowing codex/...
-Stowing editorconfig/...
-Stowing git/...
-Stowing gpg/...
-Stowing konsole/...
-Stowing nchat/...
-Stowing pass/...
-Stowing tmuxai/...
-#+end_example
+: mkdir: created directory '/home/user/.password-store/'
+: Password store initialized for 8CA82212EC57873B
+
+** Suggested File Structure
+- =net/=
+  - =github.com/=
+    - =username/=
+      - =password.gpg=
+      - =otp.gpg=
+      - =tokens/=
+        - =copilot.gpg=
+  - =aws.amazon.com/=
+    - =username/=
+      - =password.gpg=
+      - =otp.gpg=
+      - =tokens/=
+        - =access_key.gpg=
+        - =secret_key.gpg=
+    - =iam/=
+      - =username/=
+        - =id.gpg=
+        - =password.gpg=
+        - =tokens/=
+          - =access_key.gpg=
+          - =secret_key.gpg=
+  - =mongodb.com/=
+    - =username/=
+      - =password.gpg=
+      - =otp.gpg=
+      - =cluster/=
+        - =cluster_name.gpg=
+- =wifi/=
+  - =home/=
+    - =network_name.gpg=
+- =bash/=
+  - =openai_api_key.gpg=
+
+*** Environment Variables Loading
+Suggested naming:
+- =MONGO_URI= :: =net/mongodb.com/username/cluster/cluster_name=
+- =OPENAI_API_KEY= :: =bash/openai_api_key=

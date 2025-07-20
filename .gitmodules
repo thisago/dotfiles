@@ -1,5 +1,3 @@
-# How setup dynamic URL based on origin?
-[submodule "bin/.local/bin/recact"]
-	path = bin/.local/bin/recact
-[submodule "bin/.local/bin/smallBashScripts"]
-	path = bin/.local/bin/smallBashScripts
+[submodule "internal/scripts/smallBashScripts"]
+	path = internal/scripts/smallBashScripts
+	url = https://github.com/thisago/smallBashScripts
