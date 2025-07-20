@@ -1,3 +1,6 @@
 [submodule "internal/scripts/smallBashScripts"]
 	path = internal/scripts/smallBashScripts
 	url = https://github.com/thisago/smallBashScripts
+[submodule "internal/emacs/dotdoom"]
+	path = internal/emacs/dotdoom
+	url = https://github.com/thisago/dotdoom
