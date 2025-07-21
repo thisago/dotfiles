@@ -1,3 +1,4 @@
+# -*- mode: conf -*-
 [Appearance]
 BoldIntense=true
 ColorScheme=WhiteOnBlack
