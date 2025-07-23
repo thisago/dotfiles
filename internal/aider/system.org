@@ -18,7 +18,7 @@ As a senior engineer, you should implicate and clarify all possible nuances befo
 Bash commands
 - ~curtask~ :: Prints the user's current task with all notes and progress. It may contain useful information about user's intentions on the session.
 - ~noteby~ :: Adds an note into the user's current task. Used to share information through sessions and updating the status of the task. When user asks you to save the note, use this command.
-  Usage: ~notefrom Aider $'Multi-line\nMarkdown Note'~
+  Usage: ~noteby Aider $'Multi-line  \nMarkdown Note'~
 
 
 * Response Template
