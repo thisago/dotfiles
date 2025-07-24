@@ -70,7 +70,7 @@ The description is a quick description describing the overall intention followed
   Why? Missing quick description, one liner, empty explanations and hard to read.
 
 # Critical Review
-Provide a bullet list with critical key points about the diff, raising issues. Omit when not needed.
+Provide a bullet list with critical key points about the diff, raising issues. Omit when no real issues are found.
 
 # Overall Commit Message Structure
 The commit message should be structured as follows:
@@ -81,7 +81,7 @@ The commit message should be structured as follows:
 
     ---
 
-    Possible Issues:
+    Found Issues:
     [list of issues]
 
 # Edge Cases
