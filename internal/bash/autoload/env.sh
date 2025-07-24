@@ -23,39 +23,31 @@ Make sure to never exceed the 50 characters hard limit at commit summary.
 - **refactor**: A code change that neither fixes a bug nor adds a feature
 - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 - **test**: Adding missing tests or correcting existing tests
+- **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
+- **bump**: Version bump of a dependency or tool
 
 ## Scope
 Generally the module path or name of the affected files or responsibilities, simplified if needed to fit the summary word limit.
 
 - Good Examples:
-  - test(platform/shotgun): fix address test
-  - wip(platform/shotgun): fix tests
-  - test(platform/sympla): fix channel tests
-  - fix(platform/sympla,shotgun): log context
-  - fix(manager): disable shotgun
-  - ci(github): workflow dispatch on PR
-  - fix(platform/shotgun): close channel
-  - fix(platform/shotgun,sympla): test goroutine
-  - fix(platform/shotgun): tests
-  - test(platform/shotgun): service and entry point
-  - wip(platform/shotgun): test service
-  - chore(mod): bump api to v0.0.3
+  - fix(repository/profile): close connection after use
+  - fix(dto/artist): add missing fields
+  - fix(handlers/task): update title when task is done
+  - test(handlers/task): fix task handler tests
 
   Bad examples with their correct below:
   - chore: update docs
-    - docs(readme): missign flag at usage
-  - feat: add TODOs, configure SaoPauloStr to be sent to Sympla endpoint
-    - refactor(platform/sympla): SaoPauloStr declaration
-  - feat: add metrics instrumentation
+    - docs(readme): missing flag at usage
+  - feat: add TODOs, configure SaoPauloStr to be sent to the endpoint
+    - refactor(platform/sympla): SaoPauloStr constants
+  - feat: add event metrics
     - feat(handlers/event): success and error metrics
   - feat: add minimum version to Go
     - chore(mod): go minimum version
   - feat: add new items to doc
     - docs(readme): add new items on FAQ
-  - feat: add docs
+  - feat: add readme
     - docs: readme
-  - feat: cron sympla with all features enabled
-    - feat(platforms/sympla): all features
   - feat: add image build
     - chore(makefile): add docker image build command
   - Initial commit
