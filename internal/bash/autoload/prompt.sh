@@ -12,8 +12,8 @@ declare -A GIT_STATUS_COLORS=(
   ["REBASE_CONFLICT"]="${RED}"
 
   # Worktree status
-  ["UNSTAGED_CHANGES"]="${LYELLOW}󱇨"
-  ["STAGED_CHANGES"]="${GREEN}"
+  ["UNSTAGED_CHANGES"]="${GREEN}󱇨"
+  ["STAGED_CHANGES"]="${LYELLOW}"
   ["UNTRACKED_FILES"]="${BLUE}"
 
   # Situation on the upstream
@@ -52,9 +52,9 @@ __prompt_git_status_codes() {
   # Identify branch status
   [[ "$status" == *"interactive rebase in progress"* ]] && output+=("REBASE")
   [[ "$status" == *"You have unmerged paths"* ]] && output+=("REBASE_CONFLICT")
-  [[ "$status" == *"Changes not staged for commit"* ]] && output+=("UNSTAGED_CHANGES")
   [[ "$status" == *"Untracked files"* ]] && output+=("UNTRACKED_FILES")
   [[ "$status" == *"Changes to be committed"* ]] && output+=("STAGED_CHANGES")
+  [[ "$status" == *"Changes not staged for commit"* ]] && output+=("UNSTAGED_CHANGES")
 
   # Check the branch situation on the upstream
   case "$status" in
