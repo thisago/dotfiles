@@ -50,13 +50,11 @@ __prompt_git_status_codes() {
   local output=()
 
   # Identify branch status
-  case "$status" in
-    *"interactive rebase in progress"*) output+=("REBASE") ;;
-    *"You have unmerged paths"*) output+=("MERGE_CONFLICT") ;;
-    *"Changes not staged for commit"*) output+=("UNSTAGED_CHANGES") ;;
-    *"Changes to be committed"*) output+=("STAGED_CHANGES") ;;
-    *"Untracked files"*) output+=("UNTRACKED_FILES") ;;
-  esac
+  [[ "$status" == *"interactive rebase in progress"* ]] && output+=("REBASE")
+  [[ "$status" == *"You have unmerged paths"* ]] && output+=("REBASE_CONFLICT")
+  [[ "$status" == *"Changes not staged for commit"* ]] && output+=("UNSTAGED_CHANGES")
+  [[ "$status" == *"Untracked files"* ]] && output+=("UNTRACKED_FILES")
+  [[ "$status" == *"Changes to be committed"* ]] && output+=("STAGED_CHANGES")
 
   # Check the branch situation on the upstream
   case "$status" in
