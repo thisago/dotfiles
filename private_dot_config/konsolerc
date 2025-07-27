@@ -1,4 +1,6 @@
 # -*- mode: conf -*-
+MenuBar=Disabled
+
 [Desktop Entry]
 DefaultProfile=Custom.profile
 
@@ -11,6 +13,10 @@ ShowWindowTitleOnTitleBar=true
 
 [Shortcut Schemes]
 Current Scheme=Default
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Enabled
 
 [UiSettings]
 ColorScheme=
