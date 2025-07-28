@@ -15,7 +15,7 @@ if command -v eza &> /dev/null; then
 fi
 
 # If 'exa' command is available, set it as 'ls'
-if command -v eza &> /dev/null; then
+if command -v exa &> /dev/null; then
   alias ls='exa -F --git'
 else
   alias ls='ls -F'
