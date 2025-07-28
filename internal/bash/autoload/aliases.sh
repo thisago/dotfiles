@@ -10,7 +10,7 @@ alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
 
 # If 'eza' command is available, set it as 'exa'
-if command -v exa &> /dev/null; then
+if command -v eza &> /dev/null; then
   alias exa='eza'
 fi
 
