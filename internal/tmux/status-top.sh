@@ -4,12 +4,6 @@
 
 echo -n " $HOSTNAME"
 
-sessionFile=~/.workflows/session.json
-if test -f "$sessionFile"; then
-  sessionPretension=$(jq -r .pretend "$sessionFile")
-  echo -n " 󱞁 $sessionPretension"
-fi
-
 IGNORED_APPS=(
   '"Firefox" "org.mozilla.firefox"'
   '"org.mozilla.firefox" "org.mozilla.firefox"'
@@ -32,4 +26,10 @@ if [[ "$(wc -l <<<"$rawWindows")" -gt 1 ]]; then
     sed -r 's/^ *(0x[^)]+) "([^"]+)": \(("([^"]*)" ?){2}?\) +([0-9]+x[0-9]+)(\+-?[0-9]+\+-?[0-9]+ *){2}/\2 (\5)/')"
 
   echo -n "  $windowName"
+fi
+
+sessionFile=~/.workflows/session.json
+if test -f "$sessionFile"; then
+  sessionPretension=$(jq -r .pretend "$sessionFile")
+  echo -n " 󱞁 $sessionPretension"
 fi
