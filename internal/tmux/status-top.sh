@@ -28,7 +28,7 @@ rawWindows=$(xwininfo -root -children | grep -vE "\(($IGNORED_APPS_REGEX)\)" | g
 
 if [[ "$(wc -l <<<"$rawWindows")" -gt 1 ]]; then
   windowName="$(echo "$rawWindows" |
-    tail -n1 |
+    head -n1 |
     sed -r 's/^ *(0x[^)]+) "([^"]+)": \(("([^"]*)" ?){2}?\) +([0-9]+x[0-9]+)(\+-?[0-9]+\+-?[0-9]+ *){2}/\2 (\5)/')"
 
   echo -n "  $windowName"
