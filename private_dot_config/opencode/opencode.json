@@ -6,7 +6,6 @@
   "share": "manual",
   "instructions": [
     "conventions.md",
-    "~/.local/share/chezmoi/internal/aider/system.org"
   ],
   "agent": {
     "code-reviewer": {
