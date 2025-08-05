@@ -1,12 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "opencode",
+  "theme": "system",
   "model": "proxy/gpt-4.1-2025-04-14",
   "autoupdate": false,
   "share": "manual",
-  "instructions": [
-    "conventions.md",
-  ],
+  "instructions": ["./conventions.md"],
+  "username": "system",
+  "experimental": {},
+  "autoshare": false,
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -15,9 +16,9 @@
       "tools": {
         // Disable file modification tools for review-only agent
         "write": false,
-        "edit": false,
-      },
-    },
+        "edit": false
+      }
+    }
   },
   "provider": {
     "proxy": {
@@ -27,9 +28,8 @@
         "baseURL": "{env:OPENAI_API_BASE}"
       },
       "models": {
-        "gpt-4.1-2025-04-14": {
-          "name": "GPT 4.1"
-        }
+        "gpt-4.1-2025-04-14": {},
+        "claude-3.7-sonnet-thought": {}
       }
     }
   }
