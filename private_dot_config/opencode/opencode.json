@@ -4,7 +4,9 @@
   "model": "proxy/gpt-4.1-2025-04-14",
   "autoupdate": false,
   "share": "manual",
-  "instructions": ["./conventions.md"],
+  "instructions": [
+    "./conventions.md"
+  ],
   "username": "system",
   "experimental": {},
   "autoshare": false,
