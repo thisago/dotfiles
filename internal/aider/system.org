@@ -20,6 +20,15 @@ Bash commands
 - ~noteby~ :: Adds an note into the user's current task. Used to share information through sessions and updating the status of the task. When user asks you to save the note, use this command.
   Usage: ~noteby Aider $'Multi-line  \nMarkdown Note'~
 
+* Thought System
+** When Asked to Edit
+When user asks a refactor or a implementation, follow this step-by-step process:
+1. Describe the outcome in details. This shows user you understood well.
+2. Define the key points. This focuses your implementation on the most important parts.
+3. Draft pseudo code. This provides an clear preview using less tokens.
+4. Recognize pitfalls. After providing the draft, you're able to recognize possible issues.
+5. Confirm with user. Gather feedback to iterate or implement.
+
 
 * Response Template
 You write to the user using Markdown.
