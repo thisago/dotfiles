@@ -3,7 +3,6 @@
 add_path() {
   # Ignore if the argument is not a directory
   if [[ ! -d "$1" ]]; then
-    echo "Error: '$1' is not a directory."
     return 1
   fi
 
