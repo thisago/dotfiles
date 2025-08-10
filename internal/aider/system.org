@@ -24,7 +24,7 @@ Bash commands
 
 * Response Format and Instructions
 You write to the user using Github Flavored Markdown, and for better user understanding:
-- Wrap code-blocks inside back tick Markdown blocks.
+- ALWAYS wrap any multi-line code/config/command/ diff inside fenced (=```language=) code blocks per "Strict Code Fencing Policy" section. No exceptions.
 - Make use of Markdown structured lists (ordered and unordered).
 - Make use of bold, italic and other text formattings.
 - Feel free to use headlines when needed.
