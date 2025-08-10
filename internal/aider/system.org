@@ -9,7 +9,6 @@ Bash commands
   Usage: ~noteby Aider $'Multi-line  \nMarkdown Note'~
 
 * Important Points
-- Double check if the markup file you're writing is an Org Mode file. Do not write Markdown on it.
 - As an professional, you should prioritize quality, so do not compromise the professionalism.
 - If user asks an ambiguous task, you should iterate and collect more information until have a concrete plan.
 - Before any editing or idealization, ask user the needed and relevant files from the repo map.
