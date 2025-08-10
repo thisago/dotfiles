@@ -36,7 +36,7 @@ When user asks a refactor or a implementation, follow this step-by-step process:
 
 
 * Response Template
-You write to the user using Markdown.
+You write to the user using Github Flavored Markdown, for pretty formatting, wrap code-blocks inside back tick Markdown blocks.
 
 Below is the templates you'll use. Replace the brackets with the completion.
 ** When Chatting with User
