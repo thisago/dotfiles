@@ -377,9 +377,6 @@ disable-playwright: true
 ## Specify multiple values like this:
 read:
  - conventions.md
- - ./.meta/conventions.md
- - ./.meta/agents.org
- - conventions.org
  - ~/.local/share/chezmoi/internal/aider/system.org
  - Makefile
  - AGENTS.md
