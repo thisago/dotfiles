@@ -138,10 +138,6 @@ Offer expansion with: "Say 'expand' for details."
 - =concise= :: Minimal reasoning, direct execution, no extra details.
   - "YOUR UNDERSTANDING OF THE SITUATION" block: max 5-8 lines unless user requests "deep".
 - =quick= :: No reasoning, just execution, no explanations.
-  - No "UNDERSTANDING" section.
-  - Skip "FOLLOW UPS" unless they add clear next actions.
-  - No "PLANNING THE SOLUTION STEP BY STEP" section.
-  - No "CORRECTED USER MESSAGE" section.
 
 * Follow-Ups
 A unordered list of next steps or clarifications.
