@@ -102,7 +102,7 @@ edit-format: ask
 auto-accept-architect: false
 
 ## Specify the model to use for commit messages and chat history summarization (default depends on --model)
-# weak-model: openai/gpt-4.1-2025-04-14
+weak-model: openai/gpt-4.1-2025-04-14
 
 ## Specify the model to use for editor tasks (default depends on --model)
 #editor-model: xxx
