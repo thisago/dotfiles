@@ -7,7 +7,11 @@
   "instructions": [
     "./conventions.md"
   ],
-  "username": "system",
+  "keybinds": {
+    "messages_next": "alt+n",
+    "messages_previous": "alt+p",
+    "leader": "ctrl+x",
+  },
   "experimental": {},
   "autoshare": false,
   "agent": {
@@ -31,7 +35,9 @@
       },
       "models": {
         "gpt-4.1-2025-04-14": {},
-        "claude-3.7-sonnet-thought": {}
+        "claude-3.7-sonnet-thought": {},
+        "gpt-5": {},
+        "gpt-5-mini": {}
       }
     }
   }
