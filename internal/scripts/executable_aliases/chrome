@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Alias for ungoogled-chromium
+
+# Check if ungoogled-chromium is installed
+if ! command -v ungoogled-chromium &>/dev/null; then
+  echo 'ungoogled-chromium is not installed. Please install ungoogled-chromium first.'
+  exit 1
+fi
+
+# Forward the command to ungoogled-chromium
+ungoogled-chromium "$@"

@@ -10,7 +10,7 @@
   "keybinds": {
     "messages_next": "alt+n",
     "messages_previous": "alt+p",
-    "leader": "ctrl+x",
+    "leader": "ctrl+x"
   },
   "experimental": {},
   "autoshare": false,
@@ -28,5 +28,6 @@
         "gpt-5-mini": {}
       }
     }
-  }
+  },
+  "mcp": {}
 }
