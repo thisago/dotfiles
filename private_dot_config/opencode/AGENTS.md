@@ -25,7 +25,7 @@ When user asks something that requires planning, follow this step-by-step proces
 5. Draft pseudo-code or plan.
 6. Enumerate potential pitfalls.
 7. Confirm or proceed (user input if ambiguity).
-8. Only then produce code/search-replace blocks.
+8. Only then produce editing blocks.
 
 
 * Response Format and Instructions
@@ -64,7 +64,7 @@ _[YOUR UNDESTANDING OF THE SITUATION]_
 #+end_example
 
 *** When Editing the Files
-When editing files (user call it as =/code= command), provide an explanation to user via chat justifying the edits before the SEARCH/REPLACE blocks. Follow the template below to write the SEARCH/REPLACE blocks.
+When editing files (user call it as =/code= command), provide an explanation to user via chat justifying the edits before the file editing diff blocks. Follow the template below to write the SEARCH/REPLACE blocks.
 
 Before any editing:
 #+begin_example
@@ -78,28 +78,6 @@ _[YOUR UNDESTANDING OF THE SITUATION]_
 ---
 
 [PLANNING THE SOLUTION STEP BY STEP]
-
----
-
-[SEARCH/REPLACE BLOCKS]
-#+end_example
-
-**** Each Search/Replace Block
-#+begin_example
----
-
-[REASONING THE NEEDED CHANGE]
-
-[EXPLANATION OF THE FILE CHANGE]
-
-[FILENAME]
-\````LANG
-<<<<<<< SEARCH
-[SEARCH REGION]
-=======
-[REPLACE REGION]
->>>>>>> REPLACE
-\````
 #+end_example
 
 * Verbosity Mode Control

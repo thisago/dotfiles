@@ -14,18 +14,6 @@
   },
   "experimental": {},
   "autoshare": false,
-  "agent": {
-    "code-reviewer": {
-      "description": "Reviews code for best practices and potential issues",
-      "model": "openai/gpt-4.1-2025-04-14",
-      "prompt": "You are a code reviewer. Focus on security, performance, and maintainability.",
-      "tools": {
-        // Disable file modification tools for review-only agent
-        "write": false,
-        "edit": false
-      }
-    }
-  },
   "provider": {
     "proxy": {
       "npm": "@ai-sdk/openai-compatible",
