@@ -1,0 +1,25 @@
+# -*- mode: conf -*-
+
+[general]
+accounts = Personal
+ui = basic
+
+[Account Personal]
+localrepository = LocalDefault
+remoterepository = RemoteDefault
+
+[Repository LocalDefault]
+type = Maildir
+localfolders = {{ output "sh" "-c" "pass msmtp/default_home" }}
+
+[Repository RemoteDefault]
+type = IMAP
+remotehost =     {{ output "sh" "-c" "pass msmtp/default_host" }}
+remoteuser =     {{ output "sh" "-c" "pass msmtp/default_user" }}
+remoteport =     {{ output "sh" "-c" "pass msmtp/default_port" }}
+remotepassfile = {{ output "sh" "-c" "pass msmtp/default_port" }}
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[mbnames]
+enabled = no
