@@ -12,7 +12,6 @@ Timeout 120
 
 Account        {{ output "sh" "-c" "pass msmtp/default_user" | trim }}
 
-Path           {{ output "sh" "-c" "pass msmtp/default_home" | trim }}
 Inbox          {{ output "sh" "-c" "pass msmtp/default_home" | trim }}/INBOX/
 Trash          {{ output "sh" "-c" "pass msmtp/default_home" | trim }}/Trash/
 SubFolders Verbatim
