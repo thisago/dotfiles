@@ -7,29 +7,10 @@ tls_trust_file /etc/ssl/certs/ca-certificates.crt
 logfile        ~/.msmtp.log
 
 account default
-from           {{ output "sh" "-c" "pass msmtp/default_from" }}
+from           {{ output "sh" "-c" "pass msmtp/default_from" | trim }}
 
-Host           {{ output "sh" "-c" "pass msmtp/default_host" }}
-User           {{ output "sh" "-c" "pass msmtp/default_user" }}
-PassCmd        "pass msmtp/default_pass"
-Port           {{ output "sh" "-c" "pass msmtp/default_port" }}
-SSLType IMAPS
-AuthMechs LOGIN
-SSLVersions TLSv1.2
-# Increase timeout
-Timeout 120
-
-Account        {{ output "sh" "-c" "pass msmtp/default_user" }}
-
-Path           {{ output "sh" "-c" "pass msmtp/default_home" }}
-Inbox          {{ output "sh" "-c" "pass msmtp/default_home" }}/INBOX/
-Trash          {{ output "sh" "-c" "pass msmtp/default_home" }}/Trash/
-SubFolders Verbatim
-
-Channel        {{ output "sh" "-c" "pass msmtp/default_user" }}
-Patterns * !"Archive/*"
-CopyArrivalDate yes
-Sync All
-Create Both
-Expunge None
-SyncState *
+host           {{ output "sh" "-c" "pass msmtp/default_host" | trim }}
+user           {{ output "sh" "-c" "pass msmtp/default_user" | trim }}
+passwordeval   "pass msmtp/default_pass"
+port           {{ output "sh" "-c" "pass msmtp/default_smtp_port" | trim }}
+timeout 120
