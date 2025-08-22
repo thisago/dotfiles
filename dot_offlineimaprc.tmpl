@@ -1,22 +1,40 @@
 # -*- mode: conf -*-
 
 [general]
-accounts = Personal
+accounts = Default
 ui = basic
+pythonfile = {{ .chezmoi.homeDir }}/.local/share/chezmoi/internal/offlineimap/pass.py
 
-[Account Personal]
+[Account Default]
 localrepository = LocalDefault
 remoterepository = RemoteDefault
 
 [Repository LocalDefault]
 type = Maildir
-localfolders = {{ output "sh" "-c" "pass msmtp/default_home" | trim }}
+localfolders = {{ output "sh" "-c" "pass email/default_home" | trim }}
 
 [Repository RemoteDefault]
 type = IMAP
-remotehost =     {{ output "sh" "-c" "pass msmtp/default_host" | trim }}
-remoteuser =     {{ output "sh" "-c" "pass msmtp/default_user" | trim }}
-remoteport =     {{ output "sh" "-c" "pass msmtp/default_imap_port" | trim }}
-remotepassfile = {{ output "sh" "-c" "pass msmtp/default_home" | trim }}/.imap_pass
+remoteuser =     {{ output "sh" "-c" "pass email/default_user" | trim }}
+remotepasseval = get_pass("default")
+remotehost =     {{ output "sh" "-c" "pass email/default_imap_host" | trim }}
+remoteport =     {{ output "sh" "-c" "pass email/default_imap_port" | trim }}
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Account Gmail]
+localrepository = LocalGmail
+remoterepository = RemoteGmail
+
+[Repository LocalGmail]
+type = Maildir
+localfolders = {{ output "sh" "-c" "pass email/gmail_home" | trim }}
+
+[Repository RemoteGmail]
+type = IMAP
+remoteuser =     {{ output "sh" "-c" "pass email/gmail_user" | trim }}
+remotepasseval = get_pass("gmail")
+remotehost =     {{ output "sh" "-c" "pass email/gmail_imap_host" | trim }}
+remoteport =     {{ output "sh" "-c" "pass email/gmail_imap_port" | trim }}
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
