@@ -43,7 +43,7 @@
       "enabled": false,
       "type": "local",
       "command": [
-        "# Not working"
+        "# Not working",
         "npx",
         "-y",
         "@playwright/mcp@latest"
@@ -60,6 +60,16 @@
         "ATLASSIAN_EMAIL": "{env:JIRA_MCP_ATLASSIAN_EMAIL}",
         "ATLASSIAN_TOKEN": "{env:JIRA_MCP_ATLASSIAN_TOKEN}"
       }
+    },
+    "mongodb-lens-{env:MONGODB_LENS_MCP_NAME}": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mongodb-lens@latest",
+        "{env:MONGODB_LENS_MCP_URI}"
+      ]
     }
   }
 }
