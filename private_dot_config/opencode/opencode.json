@@ -29,5 +29,37 @@
       }
     }
   },
-  "mcp": {}
+  "mcp": {
+    "tmux": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "tmux-mcp"
+      ]
+    },
+    "playwright": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--extension"
+      ]
+    },
+    "jira": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "/home/user/go/bin/jira-mcp"
+      ],
+      "environment": {
+        "ATLASSIAN_HOST": "{env:JIRA_MCP_ATLASSIAN_HOST}",
+        "ATLASSIAN_EMAIL": "{env:JIRA_MCP_ATLASSIAN_EMAIL}",
+        "ATLASSIAN_TOKEN": "{env:JIRA_MCP_ATLASSIAN_TOKEN}"
+      }
+    }
+  }
 }
