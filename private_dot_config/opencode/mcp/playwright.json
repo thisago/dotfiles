@@ -1,0 +1,11 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "isolated": false,
+    "launchOptions": {
+      "channel": "chromium",
+      "Headless": false,
+      "executablePath": "/home/user/.local/bin/ungoogled-chromium"
+    }
+  }
+}

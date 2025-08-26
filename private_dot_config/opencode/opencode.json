@@ -40,13 +40,13 @@
       ]
     },
     "playwright": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": [
+        "# Not working"
         "npx",
         "-y",
-        "@playwright/mcp@latest",
-        "--extension"
+        "@playwright/mcp@latest"
       ]
     },
     "jira": {
