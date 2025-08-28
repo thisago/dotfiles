@@ -11,14 +11,14 @@ remoterepository = RemoteDefault
 
 [Repository LocalDefault]
 type = Maildir
-localfolders = {{ output "sh" "-c" "pass email/default_home" | trim }}
+localfolders = {{ output "sh" "-c" "pass email/default_home || echo" | trim }}
 
 [Repository RemoteDefault]
 type = IMAP
-remoteuser =     {{ output "sh" "-c" "pass email/default_user" | trim }}
+remoteuser =     {{ output "sh" "-c" "pass email/default_user || echo" | trim }}
 remotepasseval = get_pass("default")
-remotehost =     {{ output "sh" "-c" "pass email/default_imap_host" | trim }}
-remoteport =     {{ output "sh" "-c" "pass email/default_imap_port" | trim }}
+remotehost =     {{ output "sh" "-c" "pass email/default_imap_host || echo" | trim }}
+remoteport =     {{ output "sh" "-c" "pass email/default_imap_port || echo" | trim }}
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
@@ -28,13 +28,13 @@ remoterepository = RemoteGmail
 
 [Repository LocalGmail]
 type = Maildir
-localfolders = {{ output "sh" "-c" "pass email/gmail_home" | trim }}
+localfolders = {{ output "sh" "-c" "pass email/gmail_home || echo" | trim }}
 
 [Repository RemoteGmail]
 type = IMAP
-remoteuser =     {{ output "sh" "-c" "pass email/gmail_user" | trim }}
+remoteuser =     {{ output "sh" "-c" "pass email/gmail_user || echo" | trim }}
 remotepasseval = get_pass("gmail")
-remotehost =     {{ output "sh" "-c" "pass email/gmail_imap_host" | trim }}
-remoteport =     {{ output "sh" "-c" "pass email/gmail_imap_port" | trim }}
+remotehost =     {{ output "sh" "-c" "pass email/gmail_imap_host || echo" | trim }}
+remoteport =     {{ output "sh" "-c" "pass email/gmail_imap_port || echo" | trim }}
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt

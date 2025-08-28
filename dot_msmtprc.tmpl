@@ -7,17 +7,17 @@ tls_trust_file /etc/ssl/certs/ca-certificates.crt
 logfile        ~/.msmtp.log
 
 account default
-from           {{ output "sh" "-c" "pass email/default_from" | trim }}
-user           {{ output "sh" "-c" "pass email/default_user" | trim }}
+from           {{ output "sh" "-c" "pass email/default_from || echo" | trim }}
+user           {{ output "sh" "-c" "pass email/default_user || echo" | trim }}
 passwordeval   "pass email/default_pass"
-host           {{ output "sh" "-c" "pass email/default_smtp_host" | trim }}
-port           {{ output "sh" "-c" "pass email/default_smtp_port" | trim }}
+host           {{ output "sh" "-c" "pass email/default_smtp_host || echo" | trim }}
+port           {{ output "sh" "-c" "pass email/default_smtp_port || echo" | trim }}
 timeout 120
 
 account gmail
-from           {{ output "sh" "-c" "pass email/gmail_from" | trim }}
-user           {{ output "sh" "-c" "pass email/gmail_user" | trim }}
+from           {{ output "sh" "-c" "pass email/gmail_from || echo" | trim }}
+user           {{ output "sh" "-c" "pass email/gmail_user || echo" | trim }}
 passwordeval   "pass email/gmail_pass"
-host           {{ output "sh" "-c" "pass email/gmail_smtp_host" | trim }}
-port           {{ output "sh" "-c" "pass email/gmail_smtp_port" | trim }}
+host           {{ output "sh" "-c" "pass email/gmail_smtp_host || echo" | trim }}
+port           {{ output "sh" "-c" "pass email/gmail_smtp_port || echo" | trim }}
 timeout 120

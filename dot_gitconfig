@@ -75,17 +75,11 @@
 [init]
   defaultBranch = master
 
-[commit]
-  gpgsign = true
-
 [gpg]
   program = gpg
 
 [http]
   sslCAinfo = /etc/ssl/certs/ca-certificates.crt
-
-[url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
 
 [credential "https://github.com"]
   helper =
