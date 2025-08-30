@@ -2,7 +2,7 @@
 
 # Prints the percentage of time passed in a session considering the expected duration and the date and time.
 
-workflowsDir=~/.workflows
+workflowsDir=~/Documents/repos/asciicasts/workflow/
 if test -d "$workflowsDir"; then
   nowEpoch="$(date '+%s')"
   sessionFile="$workflowsDir/session.json"
