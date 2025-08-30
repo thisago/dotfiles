@@ -28,7 +28,7 @@ if [[ "$(wc -l <<<"$rawWindows")" -gt 1 ]]; then
   echo -n "  $windowName"
 fi
 
-sessionFile=~/Documents/repos/asciicasts/workflow/session.json
+sessionFile=~/session.json
 if test -f "$sessionFile"; then
   sessionPretension=$(jq -r .pretend "$sessionFile")
   echo -n " 󱞁 $sessionPretension"

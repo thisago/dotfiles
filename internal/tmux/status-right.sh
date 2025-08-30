@@ -5,7 +5,7 @@
 workflowsDir=~/Documents/repos/asciicasts/workflow/
 if test -d "$workflowsDir"; then
   nowEpoch="$(date '+%s')"
-  sessionFile="$workflowsDir/session.json"
+  sessionFile=~/session.json
   if [[ -f "$sessionFile" ]]; then
     sessionData="$(jq -r '(.start | tostring) + " " + (.expectedDuration | tostring) + " " + (.stdin | tostring)' < "$sessionFile")"
 
