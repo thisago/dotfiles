@@ -7,7 +7,7 @@ __isinteractive_is_interactive || return
 command -v aider &> /dev/null || return
 
 # Set Aider shell completion file
-export AIDER_SHELL_COMPLETION_FILE="$HOME/.config/aider/shell-completion.bash"
+export AIDER_SHELL_COMPLETION_FILE="$HOME/.config/aider/shell-completion.sh"
 
 # Create the directory for Aider shell completion if file doesn't exist
 if [ ! -f "$AIDER_SHELL_COMPLETION_FILE" ]; then
