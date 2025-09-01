@@ -34,7 +34,7 @@
       "enabled": true,
       "type": "local",
       "command": [
-        "npx",
+        "bunx",
         "-y",
         "tmux-mcp"
       ]
@@ -44,7 +44,7 @@
       "type": "local",
       "command": [
         "# Not working",
-        "npx",
+        "bunx",
         "-y",
         "@playwright/mcp@latest"
       ]
