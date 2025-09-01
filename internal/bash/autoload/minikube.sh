@@ -6,6 +6,10 @@ __isinteractive_is_interactive || return
 # Check if 'minikube' command is available
 command -v minikube &> /dev/null || return
 
+# Configs
+export MINIKUBE_IN_STYLE=false
+
+
 # Set Minikube shell completion file
 export MINIKUBE_SHELL_COMPLETION_FILE="$HOME/.minikube/shell-completion.sh"
 
