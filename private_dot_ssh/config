@@ -14,3 +14,8 @@ Host gh
   HostName github.com
   Port 22
   User git
+
+Host cb
+  HostName codeberg.org
+  Port 22
+  User git
