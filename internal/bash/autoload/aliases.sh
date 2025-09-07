@@ -44,3 +44,7 @@ fi
 if command -v xclip &> /dev/null; then
   alias xclipboard='xclip -selection clipboard'
 fi
+
+if command -v hebcal &> /dev/null; then
+  alias moadim='hebcal -wixEag --no-modern --no-mf --chag-only'
+fi
