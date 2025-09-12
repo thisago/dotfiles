@@ -48,6 +48,28 @@
         "-y",
         "@playwright/mcp@latest"
       ]
+    },
+    "jira": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "/home/user/go/bin/jira-mcp"
+      ],
+      "environment": {
+        "ATLASSIAN_HOST": "{env:JIRA_MCP_ATLASSIAN_HOST}",
+        "ATLASSIAN_EMAIL": "{env:JIRA_MCP_ATLASSIAN_EMAIL}",
+        "ATLASSIAN_TOKEN": "{env:JIRA_MCP_ATLASSIAN_TOKEN}"
+      }
+    },
+    "mongodb-lens-{env:MONGODB_LENS_MCP_NAME}": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mongodb-lens@latest",
+        "{env:MONGODB_LENS_MCP_URI}"
+      ]
     }
   }
 }
