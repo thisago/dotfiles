@@ -31,7 +31,7 @@
   },
   "mcp": {
     "tmux": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": [
         "bunx",
@@ -50,7 +50,7 @@
       ]
     },
     "jira": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": [
         "/home/user/go/bin/jira-mcp"
@@ -62,7 +62,7 @@
       }
     },
     "mongodb-lens-{env:MONGODB_LENS_MCP_NAME}": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": [
         "npx",
@@ -70,6 +70,17 @@
         "mongodb-lens@latest",
         "{env:MONGODB_LENS_MCP_URI}"
       ]
+    },
+    "github": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "/home/user/.local/bin/github-mcp-server",
+        "stdio"
+      ],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
     }
   }
 }
