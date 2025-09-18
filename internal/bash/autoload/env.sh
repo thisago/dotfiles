@@ -85,6 +85,7 @@ The commit message should be structured as follows:
 
 # Edge Cases
 - If multiple intentions and scopes are present, use the most relevant one in the summary and but include all in the body.
+- If the context indicates what a LLM assistant changed, include in the commit message a note `[LLM]` at the start of the listed item.
 '
 
 export AIDER_COMMIT_PROMPT="${LLM_COMMIT_PROMPT}"
