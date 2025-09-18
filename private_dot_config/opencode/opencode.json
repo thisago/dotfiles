@@ -72,7 +72,7 @@
       ]
     },
     "github": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": [
         "/home/user/.local/bin/github-mcp-server",
