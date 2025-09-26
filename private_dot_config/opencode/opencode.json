@@ -22,6 +22,7 @@
         "baseURL": "{env:OPENAI_API_BASE}"
       },
       "models": {
+        "gpt-4.1": {},
         "gpt-4.1-2025-04-14": {},
         "claude-3.7-sonnet-thought": {},
         "gpt-5": {},
@@ -50,7 +51,7 @@
       ]
     },
     "jira": {
-      "enabled": false,
+      "enabled": true,
       "type": "local",
       "command": [
         "/home/user/go/bin/jira-mcp"
