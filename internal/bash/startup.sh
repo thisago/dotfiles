@@ -82,4 +82,5 @@ __startup_message() {
   echo -ne "$LINE_START$CLEAR_LINE"
   echo -ne "${LBLACK}$(__startup_info)${RESET}"
   echo -e "\t${GRAY}Loaded $files_count files in ${took}s"
+  echo -e "\t${LBLACK}$(uptime -p)"
 }
