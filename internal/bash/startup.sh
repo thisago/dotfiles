@@ -27,14 +27,13 @@ __startup_should_display() {
 #
 # It shows:
 # - Hostname (e.g., "notebook")
-# - Date time (e.g., "2024-03-20 09:02:07")
 # - Shell name (e.g., "bash", "zsh")
-# - System information (e.g., "Linux 5.4.0-42-generic")
+# - System information (e.g., "GNU/Linux 5.4.0-42-generic x86_64")
 # - Allocated RAM and CPU cores (e.g., "8GB RAM, 4 cores")
 # - Whether the terminal is accessed via SSH
 #
 # Example:
-# "notebook - bash - Ubuntu 20.04 LTS - 8GB RAM; 4 cores - SSH"
+# "notebook - bash - Ubuntu 20.04 LTS - 4 cores 8GB RAM - SSH"
 __startup_info() {
   __startup_should_display || return 0
 
@@ -44,14 +43,8 @@ __startup_info() {
   # Shell name
   local shell_name="$(ps -p $$ -o comm= | awk -F/ '{print $NF}')"
 
-  # System information (try lsb_release, else fallback to uname)
-  local sys_info=""
-  if command -v lsb_release &>/dev/null; then
-    sys_info="$(lsb_release -ds 2>/dev/null || true)"
-  fi
-  if [[ -z "$sys_info" ]]; then
-    sys_info="$(uname -srm)"
-  fi
+  # System information (os, release, processor)
+  local sys_info=$(uname -orm)
 
   # RAM (in GB)
   local ram_gb="$(awk '/MemTotal/ {printf "%.0f", $2/1024/1024}' /proc/meminfo 2>/dev/null)"
@@ -63,7 +56,7 @@ __startup_info() {
   [[ -z "$cpu_cores" ]] && cpu_cores="?"
   local cpu_str="${cpu_cores} cores"
 
-  local result="$hostname - $shell_name - $sys_info - $ram_str; $cpu_str"
+  local result="$hostname - $shell_name - $sys_info - $cpu_str $ram_str"
 
   # SSH info
   [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]] && result+=" - SSH"
