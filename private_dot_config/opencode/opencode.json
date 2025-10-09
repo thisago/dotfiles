@@ -1,3 +1,4 @@
+// -*- mode: jsonc -*-
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "system",
@@ -21,12 +22,97 @@
         "apiKey": "{env:OPENAI_API_KEY}",
         "baseURL": "{env:OPENAI_API_BASE}"
       },
+      // NOTE: Models was updated from /models API data, adding cost to the premium ones https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-multipliers",
       "models": {
         "gpt-4.1": {},
-        "gpt-4.1-2025-04-14": {},
+        "gpt-5-mini": {},
+        "gpt-5": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
+        "gpt-3.5-turbo": {},
+        "gpt-3.5-turbo-0613": {},
+        "gpt-4o-mini": {},
+        "gpt-4o-mini-2024-07-18": {},
+        "gpt-4": {},
+        "gpt-4-0613": {},
+        "gpt-4-0125-preview": {},
+        "gpt-4o": {},
+        "gpt-4o-2024-11-20": {},
+        "gpt-4o-2024-05-13": {},
+        "gpt-4-o-preview": {},
+        "gpt-4o-2024-08-06": {},
+        "o3-mini": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
+        "o3-mini-2025-01-31": {},
+        "o3-mini-paygo": {},
+        "grok-code-fast-1": {},
+        "gpt-5-codex": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
+        "text-embedding-ada-002": {},
+        "text-embedding-3-small": {},
+        "text-embedding-3-small-inference": {},
+        "claude-3.5-sonnet": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
+        "claude-3.7-sonnet": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
         "claude-3.7-sonnet-thought": {},
-        "gpt-5": {},
-        "gpt-5-mini": {}
+        "claude-sonnet-4": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
+        "claude-sonnet-4.5": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
+        "gemini-2.0-flash-001": {},
+        "gemini-2.5-pro": {
+          "cost": {
+            "input": 1,
+            "output": 1,
+            "cache_read": 1,
+            "cache_write": 1
+          }
+        },
+        "o4-mini": {},
+        "o4-mini-2025-04-16": {},
+        "gpt-4.1-2025-04-14": {}
       }
     }
   },
