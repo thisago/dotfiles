@@ -1,4 +1,3 @@
-// -*- mode: jsonc -*-
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "system",
@@ -22,7 +21,6 @@
         "apiKey": "{env:OPENAI_API_KEY}",
         "baseURL": "{env:OPENAI_API_BASE}"
       },
-      // NOTE: Models was updated from /models API data, adding cost to the premium ones https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-multipliers",
       "models": {
         "gpt-4.1": {},
         "gpt-5-mini": {},

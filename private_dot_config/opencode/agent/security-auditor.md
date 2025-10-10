@@ -1,5 +1,7 @@
 ---
 description: Performs security audits and identifies vulnerabilities
+mode: subagent
+model: proxy/gpt-5-mini
 tools:
   write: false
   edit: false

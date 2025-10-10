@@ -1,5 +1,7 @@
 ---
 description: Writes and maintains project documentation
+mode: subagent
+model: proxy/gpt-5-mini
 tools:
   bash: false
 ---
