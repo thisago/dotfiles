@@ -125,13 +125,16 @@
       ]
     },
     "playwright": {
-      "enabled": false,
+      "enabled": true,
       "type": "local",
       "command": [
-        "# Not working",
-        "bunx",
-        "-y",
-        "@playwright/mcp@latest"
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "--init",
+        "--pull=always",
+        "mcr.microsoft.com/playwright/mcp"
       ]
     },
     "jira": {
