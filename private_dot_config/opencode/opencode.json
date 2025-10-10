@@ -125,7 +125,7 @@
       ]
     },
     "playwright": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": [
         "docker",
