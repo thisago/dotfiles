@@ -2,7 +2,7 @@
 
 # See; https://www.brow.sh/donate/
 # By showing your support you can disable the app's branding and nags to donate.
-browsh_supporter = ""
+browsh_supporter = " "                                                                               
 
 # The base query when a non-URL is entered into the URL bar
 default_search_engine_base = "https://lite.duckduckgo.com/lite/?kp=-1&kd=-1&q="
