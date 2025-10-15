@@ -1,15 +1,8 @@
 # https://git.sr.ht/~bptato/chawan/tree/HEAD/doc/config.md
 [buffer]
-# show images on all websites
-images = true
-# disable website CSS
-styling = false
-# Specify user styles.
+images = false
+styling = true
 user-style = ""
-# You *can* set scripting to true here, but I strongly recommend using
-# [[siteconf]] to enable it on a per-site basis instead.
-[[github.com]]
-scripting = true
 
 [input]
 vi-numeric-prefix = true
@@ -28,6 +21,7 @@ G = 'n => n ? pager.gotoLine(n) : pager.cursorLastLine()'
 # number, or to the line when a preceding number is given.
 'gg' = 'gotoLineOrStart'
 
+
 # JS functions and expressions are accepted too. Following replaces the
 # default search engine with DuckDuckGo Lite.
 # (See api.md for a list of available functions, and a discussion on how
@@ -42,11 +36,6 @@ G = 'n => n ? pager.gotoLine(n) : pager.cursorLastLine()'
 match = '^ddg:'
 substitute-url = '(x) => "https://lite.duckduckgo.com/lite/?kp=-1&kd=-1&q=" + encodeURIComponent(x.split(":").slice(1).join(":"))'
 
-# To use the above rule, open the URL bar with C-k, clear it with
-# C-u, and type ddg:keyword.
-# Alternatively, you can also redefine C-k like:
-[page]
-'C-k' = '() => pager.load("ddg:")'
 
 # Search using Wikipedia, Firefox-style.
 # The [[omnirule]] syntax introduces an anonymous omnirule; it is
@@ -91,3 +80,6 @@ default-headers = {
 	Pragma = "no-cache",
 	Cache-Control = "no-cache"
 }
+
+[external]
+copy-cmd = 'xclip -selection primary'
