@@ -1,0 +1,93 @@
+# https://git.sr.ht/~bptato/chawan/tree/HEAD/doc/config.md
+[buffer]
+# show images on all websites
+images = true
+# disable website CSS
+styling = false
+# Specify user styles.
+user-style = ""
+# You *can* set scripting to true here, but I strongly recommend using
+# [[siteconf]] to enable it on a per-site basis instead.
+[[github.com]]
+scripting = true
+
+[input]
+vi-numeric-prefix = true
+
+[page]
+# Here, the arrow function will be called with the vi numbered prefix if
+# one was input, and with no argument otherwise.
+# The numeric prefix can never be zero, so it is safe to test for undefined
+# using the ternary operator.
+G = 'n => n ? pager.gotoLine(n) : pager.cursorLastLine()'
+
+# show change URL when Control, Escape and j are pressed
+'C-M-j' = 'load'
+
+# go to the first line of the page when g is pressed twice without a preceding
+# number, or to the line when a preceding number is given.
+'gg' = 'gotoLineOrStart'
+
+# JS functions and expressions are accepted too. Following replaces the
+# default search engine with DuckDuckGo Lite.
+# (See api.md for a list of available functions, and a discussion on how
+# to add your own "namespaced" commands like above.)
+'C-k' = '() => pager.load("ddg:")'
+
+
+# Search using DuckDuckGo Lite.
+# (This rule is included in the default config, although C-k invokes
+# Brave search.)
+[omnirule.ddg]
+match = '^ddg:'
+substitute-url = '(x) => "https://lite.duckduckgo.com/lite/?kp=-1&kd=-1&q=" + encodeURIComponent(x.split(":").slice(1).join(":"))'
+
+# To use the above rule, open the URL bar with C-k, clear it with
+# C-u, and type ddg:keyword.
+# Alternatively, you can also redefine C-k like:
+[page]
+'C-k' = '() => pager.load("ddg:")'
+
+# Search using Wikipedia, Firefox-style.
+# The [[omnirule]] syntax introduces an anonymous omnirule; it is
+# equivalent to the named one.
+[[omnirule]]
+match = '^@wikipedia'
+substitute-url = '(x) => "https://en.wikipedia.org/wiki/Special:Search?search=" + encodeURIComponent(x.replace(/@wikipedia/, ""))'
+
+# As noted above, the default config includes some built-in rules, selected according to the maintainer's preference and the minimum criterion that they must work without cookies and JavaScript. Currently, these are:
+# - ddg: - DuckDuckGo Lite.
+# - br: - Brave Search.
+# - wk: - English Wikipedia.
+# - wd: - English Wikitionary.
+# - mo: - Mojeek.
+
+# Enable cookies on the orange website for log-in.
+[siteconf.gh]
+url = 'https://github\.com/.*'
+cookie = true
+
+# Allow cookie sharing on *sr.ht domains.
+[siteconf.sr-ht]
+host = '(.*\.)?sr\.ht' # either 'something.sr.ht' or 'sr.ht'
+cookie = true # enable cookies (read-only; use "save" to persist them)
+share-cookie-jar = 'sr.ht' # use the cookie jar of 'sr.ht' for all matched hosts
+
+# Use the "vector" skin on Wikipedia.
+# The [[siteconf]] syntax introduces an anonymous siteconf; it is
+# equivalent to the above ones.
+[[siteconf]]
+url = '^https?://[a-z]+\.wikipedia\.org/wiki/(?!.*useskin=.*)'
+rewrite-url = 'x => x.searchParams.append("useskin", "vector")'
+
+# Make imgur send us images.
+[siteconf.imgur]
+host = '(i\.)?imgur\.com'
+default-headers = {
+	User-Agent = "Mozilla/5.0 chawan",
+	Accept = "*/*",
+	Accept-Encoding = "gzip, deflate",
+	Accept-Language = "en;q=1.0",
+	Pragma = "no-cache",
+	Cache-Control = "no-cache"
+}
