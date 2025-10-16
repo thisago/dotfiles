@@ -149,16 +149,18 @@
         "ATLASSIAN_TOKEN": "{env:JIRA_MCP_ATLASSIAN_TOKEN}"
       }
     },
-    "mongodb-lens-{env:MONGODB_LENS_MCP_NAME}": {
-      "enabled": false,
+{{ range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_mongo | trim | split "\n" }}
+    "mongodb-lens-{{ output "sh" "-c" (printf "pass %s/name" $pass_dir) | trim }}": {
+      "enabled": true,
       "type": "local",
       "command": [
         "npx",
         "-y",
         "mongodb-lens@latest",
-        "{env:MONGODB_LENS_MCP_URI}"
+        "{{ output "sh" "-c" (printf "pass %s/uri" $pass_dir) | trim }}"
       ]
     },
+{{ end }}
     "github": {
       "enabled": false,
       "type": "local",
