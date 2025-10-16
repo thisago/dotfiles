@@ -1,6 +1,7 @@
 # -*- mode: conf -*-
 
 [general]
+{{ $ctx := . }}
 accounts = {{ output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | paste -sd, -" "_" .pass_dir .pass_email | trim }}
 ui = basic
 pythonfile = {{ .chezmoi.homeDir }}/.local/share/chezmoi/internal/offlineimap/pass.py
@@ -17,7 +18,7 @@ localfolders = {{ output "sh" "-c" (printf "pass %s/home_dir" $pass_dir) | trim 
 [Repository Remote{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}]
 type = IMAP
 remoteuser     = {{ output "sh" "-c" (printf "pass %s/user" $pass_dir) | trim }}
-remotepasseval = get_pass("{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}")
+remotepasseval = get_pass("{{ $ctx.pass_email }}", "{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}")
 remotehost     = {{ output "sh" "-c" (printf "pass %s/imap_host" $pass_dir) | trim }}
 remoteport     = {{ output "sh" "-c" (printf "pass %s/imap_port" $pass_dir) | trim }}
 ssl            = yes
