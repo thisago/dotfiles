@@ -1,40 +1,26 @@
 # -*- mode: conf -*-
 
 [general]
-accounts = Default, Gmail
+accounts = {{ output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | paste -sd, -" "_" .pass_dir .pass_email | trim }}
 ui = basic
 pythonfile = {{ .chezmoi.homeDir }}/.local/share/chezmoi/internal/offlineimap/pass.py
 
-[Account Default]
-localrepository = LocalDefault
-remoterepository = RemoteDefault
+{{ range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_email | trim | split "\n" -}}
+[Account {{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}]
+localrepository = Local{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}
+remoterepository = Remote{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}
 
-[Repository LocalDefault]
+[Repository Local{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}]
 type = Maildir
-localfolders = {{ output "sh" "-c" "pass email/default_home || echo" | trim }}
+localfolders = {{ output "sh" "-c" (printf "pass %s/home_dir" $pass_dir) | trim }}
 
-[Repository RemoteDefault]
+[Repository Remote{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}]
 type = IMAP
-remoteuser =     {{ output "sh" "-c" "pass email/default_user || echo" | trim }}
-remotepasseval = get_pass("default")
-remotehost =     {{ output "sh" "-c" "pass email/default_imap_host || echo" | trim }}
-remoteport =     {{ output "sh" "-c" "pass email/default_imap_port || echo" | trim }}
-ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteuser     = {{ output "sh" "-c" (printf "pass %s/user" $pass_dir) | trim }}
+remotepasseval = get_pass("{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}")
+remotehost     = {{ output "sh" "-c" (printf "pass %s/imap_host" $pass_dir) | trim }}
+remoteport     = {{ output "sh" "-c" (printf "pass %s/imap_port" $pass_dir) | trim }}
+ssl            = yes
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 
-[Account Gmail]
-localrepository = LocalGmail
-remoterepository = RemoteGmail
-
-[Repository LocalGmail]
-type = Maildir
-localfolders = {{ output "sh" "-c" "pass email/gmail_home || echo" | trim }}
-
-[Repository RemoteGmail]
-type = IMAP
-remoteuser =     {{ output "sh" "-c" "pass email/gmail_user || echo" | trim }}
-remotepasseval = get_pass("gmail")
-remotehost =     {{ output "sh" "-c" "pass email/gmail_imap_host || echo" | trim }}
-remoteport =     {{ output "sh" "-c" "pass email/gmail_imap_port || echo" | trim }}
-ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+{{ end -}}

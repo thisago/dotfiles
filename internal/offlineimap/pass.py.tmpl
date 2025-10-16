@@ -1,0 +1,9 @@
+# -*- mode: python -*-
+from subprocess import check_output
+
+
+def get_pass(account_dir):
+    """Retrieve the password for the given account name using pass."""
+    command = "pass {{ .pass_email }}/%s/password" % account_dir
+    result = check_output(command, shell=True).strip().decode("utf-8")
+    return result

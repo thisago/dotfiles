@@ -1,0 +1,18 @@
+# -*- mode: yaml -*-
+data:
+  # Configure `pass` directories for looping
+  pass_dir: {{ printf "%s/.password-store" .chezmoi.homeDir }}
+  # Email expects inside the directories:
+  # - from
+  # - user
+  # - password
+  # - imap_host
+  # - imap_port
+  # - smtp_host
+  # - smtp_port
+  # - home_dir
+  pass_email: email
+  # Mongo expects:
+  # - name
+  # - uri
+  pass_mongo: mongo

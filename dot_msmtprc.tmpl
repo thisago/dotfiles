@@ -6,18 +6,12 @@ tls            on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
 logfile        ~/.msmtp.log
 
-account default
-from           {{ output "sh" "-c" "pass email/default_from || echo" | trim }}
-user           {{ output "sh" "-c" "pass email/default_user || echo" | trim }}
-passwordeval   "pass email/default_pass"
-host           {{ output "sh" "-c" "pass email/default_smtp_host || echo" | trim }}
-port           {{ output "sh" "-c" "pass email/default_smtp_port || echo" | trim }}
+{{ range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_email | trim | split "\n" -}}
+account {{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}
+from           {{ output "sh" "-c" (printf "pass %s/from" $pass_dir) | trim }}
+user           {{ output "sh" "-c" (printf "pass %s/user" $pass_dir) | trim }}
+passwordeval   "{{ printf "pass %s/password" $pass_dir }}"
+host           {{ output "sh" "-c" (printf "pass %s/smtp_host" $pass_dir) | trim }}
+port           {{ output "sh" "-c" (printf "pass %s/smtp_port" $pass_dir) | trim }}
 timeout 120
-
-account gmail
-from           {{ output "sh" "-c" "pass email/gmail_from || echo" | trim }}
-user           {{ output "sh" "-c" "pass email/gmail_user || echo" | trim }}
-passwordeval   "pass email/gmail_pass"
-host           {{ output "sh" "-c" "pass email/gmail_smtp_host || echo" | trim }}
-port           {{ output "sh" "-c" "pass email/gmail_smtp_port || echo" | trim }}
-timeout 120
+{{ end -}}

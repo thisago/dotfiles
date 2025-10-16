@@ -1,0 +1,30 @@
+#-*- mode: yaml -*-
+# yaml-language-server: $schema=https://raw.githubusercontent.com/thisago/vi-mongo/refs/heads/feat/config-env-expansion/schemas/config.yaml
+version: 1.0.0
+log:
+  path: /tmp/vi-mongo.log
+  level: error
+  prettyPrint: true
+
+editor:
+  command: emacsclient
+  env: EDITOR
+
+showConnectionPage: false
+showWelcomePage: false
+
+currentConnection: localhost
+connections:
+  - url: mongodb://localhost:27017
+    name: localhost
+    timeout: 5
+
+{{ range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_mongo | trim | split "\n" }}
+  - url: {{ output "sh" "-c" (printf "pass %s/uri" $pass_dir) | trim }}
+    name: {{ output "sh" "-c" (printf "pass %s/name" $pass_dir) | trim }}
+    timeout: 5
+
+{{ end -}}
+styles:
+  betterSymbols: true
+  currentStyle: theme.yaml
