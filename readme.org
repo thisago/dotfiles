@@ -1,8 +1,21 @@
 #+title: Dot Files
 
-* Pass
-** Generating GPG key
-*** GPG Key Config
+* Setup
+* =.env=
+Copy [[file:internal/bash/.env.example]] into [[file:internal/bash/.env]] and set your secrets there.
+
+Ensure to have set:
+- =DOTFILES_USER=
+- =DOTFILES_EMAIL=
+And optionally:
+- =DOTFILES_GPG=
+As they become your Git commiter config. (Currently the [[dot_gitconfig][.gitconfig]] doesn't defines the user, email and GPG key)
+
+** Pass
+This repo heavyly relies in ~pass~.
+*** Generating GPG key
+Open this file in Emacs and just execute the following code blocks:
+**** GPG Key Config
 #+begin_src text :tangle gpg-batch.txt
 %no-protection
 Key-Type: eddsa
@@ -15,12 +28,12 @@ Expire-Date: 0
 %commit
 #+end_src
 
-*** Generating
+**** Generating
 #+begin_src bash :results none
 gpg --batch --generate-key gpg-batch.txt
 #+end_src
 
-*** Retrieving the Generated Key
+**** Retrieving the Generated Key
 #+name: key_id
 #+begin_src bash
 gpg --list-keys --with-colons pass@localhost | awk -F: '/^pub/ {print $5; exit}'
@@ -29,7 +42,7 @@ gpg --list-keys --with-colons pass@localhost | awk -F: '/^pub/ {print $5; exit}'
 #+RESULTS: key_id
 : 8CA82212EC57873B
 
-*** Initialize =pass= with the Generated Key
+**** Initialize =pass= with the Generated Key
 #+begin_src bash :var key_id=key_id :results pp
 pass init "$key_id"
 #+end_src
@@ -38,17 +51,20 @@ pass init "$key_id"
 : mkdir: created directory '/home/user/.password-store/'
 : Password store initialized for 8CA82212EC57873B
 
-** Suggested File Structure
+*** File Structure
+Online services:
 - =net/=
   - =github.com/=
     - =username/=
+      - =username.gpg=
       - =password.gpg=
       - =otp.gpg=
       - =tokens/=
-        - =copilot.gpg=
+        - =mcp.gpg=
   - =aws.amazon.com/=
     - =username/=
       - =password.gpg=
+      - =otp.gpg=
       - =otp.gpg=
       - =tokens/=
         - =access_key.gpg=
@@ -61,18 +77,38 @@ pass init "$key_id"
           - =access_key.gpg=
           - =secret_key.gpg=
   - =mongodb.com/=
-    - =username/=
+    - =username_or_project/=
       - =password.gpg=
       - =otp.gpg=
-      - =cluster/=
-        - =cluster_name.gpg=
-- =wifi/=
-  - =home/=
-    - =network_name.gpg=
-- =bash/=
-  - =openai_api_key.gpg=
+      - =uri.gpg=
 
-*** Environment Variables Loading
-Suggested naming:
-- =MONGO_URI= :: =net/mongodb.com/username/cluster/cluster_name=
-- =OPENAI_API_KEY= :: =bash/openai_api_key=
+Local services:
+- =local/=
+  - =forgejo.mynetwork=
+    - =user/=
+      - =username.gpg=
+      - =password.gpg=
+      - =otp.gpg=
+      - =tokens/=
+        - =cli.gpg=
+
+App-specific:
+- =env/=
+  - =some_exposed_env.gpg=
+- =email/=
+  - =account1/=
+    - =from.gpg=: John Doe
+    - =home_dir.gpg=: ~/Mail/account1
+    - =imap_host.gpg=
+    - =imap_port.gpg=: 993
+    - =password.gpg=
+    - =smtp_host.gpg=
+    - =smtp_port.gpg=: 587
+    - =user.gpg=: johndoe
+- =slack/=
+  - =cookie.gpg=
+  - =token.gpg=
+- =mongodb/=
+  - =project1/=
+    - =name.gpg=: Project 1
+    - =uri.gpg=
