@@ -6,7 +6,8 @@ tls            on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
 logfile        ~/.msmtp.log
 
-{{ range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_email | trim | split "\n" -}}
+{{ if (eq (output "sh" "-c" "cd $1 && test -d $2 && echo 1 || echo 0" "_" .pass_dir .pass_email) "1") }}
+{{   range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_email | trim | split "\n" -}}
 account {{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}
 from           {{ output "sh" "-c" (printf "pass %s/from" $pass_dir) | trim }}
 user           {{ output "sh" "-c" (printf "pass %s/user" $pass_dir) | trim }}
@@ -14,4 +15,5 @@ passwordeval   "{{ printf "pass %s/password" $pass_dir }}"
 host           {{ output "sh" "-c" (printf "pass %s/smtp_host" $pass_dir) | trim }}
 port           {{ output "sh" "-c" (printf "pass %s/smtp_port" $pass_dir) | trim }}
 timeout 120
+{{   end -}}
 {{ end -}}

@@ -19,11 +19,13 @@ connections:
     name: localhost
     timeout: 5
 
+{{ if (eq (output "sh" "-c" "cd $1 && test -d $2 && echo 1 || echo 0" "_" .pass_dir .pass_mongo) "1") }}
 {{ range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_mongo | trim | split "\n" }}
   - url: {{ output "sh" "-c" (printf "pass %s/uri" $pass_dir) | trim }}
     name: {{ output "sh" "-c" (printf "pass %s/name" $pass_dir) | trim }}
     timeout: 5
 
+{{   end -}}
 {{ end -}}
 styles:
   betterSymbols: true

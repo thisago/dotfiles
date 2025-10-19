@@ -6,7 +6,8 @@ accounts = {{ output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d
 ui = basic
 pythonfile = {{ .chezmoi.homeDir }}/.local/share/chezmoi/internal/offlineimap/pass.py
 
-{{ range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_email | trim | split "\n" -}}
+{{ if (eq (output "sh" "-c" "cd $1 && test -d $2 && echo 1 || echo 0" "_" .pass_dir .pass_email) "1") }}
+{{   range $_, $pass_dir := output "sh" "-c" "cd $1 && find $2 -maxdepth 1 -mindepth 1 -type d" "_" .pass_dir .pass_email | trim | split "\n" -}}
 [Account {{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}]
 localrepository = Local{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}
 remoterepository = Remote{{ output "sh" "-c" (printf "basename '%s'" $pass_dir) | trim }}
@@ -24,4 +25,5 @@ remoteport     = {{ output "sh" "-c" (printf "pass %s/imap_port" $pass_dir) | tr
 ssl            = yes
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 
+{{   end -}}
 {{ end -}}
